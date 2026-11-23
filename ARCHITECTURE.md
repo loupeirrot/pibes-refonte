@@ -155,7 +155,7 @@ La liste des pages, leurs balises et leur lot sont dans `plan-site.json`. Les te
 - Balise type : `<img src="…-960.webp" srcset="…-480.webp 480w, …-960.webp 960w, …-1600.webp 1600w" sizes="…" alt="…" width="…" height="…" loading="lazy">`.
 - Toujours `alt` (vide si l'image est décorative), `width` et `height`. `loading="lazy"` partout sauf l'image principale de la page (`fetchpriority="high"`, une seule par page).
 - 300 Ko au plus par image. Image de partage `assets/img/partage.jpg`, 1200 × 630, en JPEG.
-- Favicon : `favicon.svg` à la racine (un « P » dans la charte), plus `favicon.ico`.
+- Favicon : celui du site actuel (sigle « PB » noir), en `favicon.png` (32 px) et `favicon.ico` à la racine, plus `apple-touch-icon.png` (180 px). Décision de Pierre du 23/11/2026.
 
 ## 11. Formulaire de contact
 
