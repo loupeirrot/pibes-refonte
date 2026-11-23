@@ -1,0 +1,46 @@
+{
+  "_lisez_moi": "Films et reels montrés sur le site. Identifiants relevés sur la page /portfolio/ en ligne le 16/11/2026. Pierre complète ; un modèle n'ajoute jamais un projet de lui-même.",
+  "bunny": { "bibliotheque": "801824", "cdn": "vz-25e90935-e10.b-cdn.net" },
+  "projets": [
+    {
+      "id": "optima-delwood", "type": "film", "source": "youtube", "video": "2J7MZ--tcww",
+      "titre": "Optima by Delwood", "sous_titre": "Quand un hélicoptère devient une œuvre d'art",
+      "public": ["entreprise"], "etude": "projets/optima-delwood.html", "vignette": "optima"
+    },
+    {
+      "id": "ziwig", "type": "film", "source": "youtube", "video": "B3PK27fVF2A",
+      "titre": "Laboratoire Ziwig", "sous_titre": "Innovation 2025",
+      "public": ["entreprise"], "etude": "projets/ziwig.html", "vignette": "ziwig-facade"
+    },
+    {
+      "id": "bal-pompiers", "type": "reel", "source": "bunny", "video": "76510156-1c0d-4b75-800e-fa5e40481d45",
+      "titre": "Bal des pompiers 2026", "sous_titre": "Événementiel",
+      "public": ["evenement"], "etude": null, "vignette": "reel-01"
+    },
+    {
+      "id": "posca-delwood", "type": "reel", "source": "bunny", "video": "b0c90fa4-87d7-4ffa-b4bb-92fe266a5d3f",
+      "titre": "Posca by Delwood", "sous_titre": "Artiste",
+      "public": ["entreprise"], "etude": "projets/optima-delwood.html", "vignette": "reel-02"
+    },
+    {
+      "id": "complexe-immobilier", "type": "reel", "source": "bunny", "video": "4f70a475-b306-46f0-8329-eb48d46c6c73",
+      "titre": "Complexe immobilier", "sous_titre": "Arthur Lasson",
+      "public": ["immobilier"], "etude": null, "vignette": "reel-03"
+    },
+    {
+      "id": "la-nord", "type": "reel", "source": "bunny", "video": "d5af5a93-42e4-4d4c-9f0d-a2d8c3eac49e",
+      "titre": "La Nord · 02/10/2026", "sous_titre": "Surf, Hossegor",
+      "public": ["sport"], "etude": null, "vignette": "reel-04"
+    },
+    {
+      "id": "le-stud", "type": "reel", "source": "bunny", "video": "dcb74af6-23c7-4dc5-ba5f-7c96e3d5a6c2",
+      "titre": "Le Stud", "sous_titre": "Cyril Cazeaux",
+      "public": ["artisan"], "etude": null, "vignette": "reel-05"
+    },
+    {
+      "id": "tasta-wood-solution", "type": "reel", "source": "bunny", "video": "0bd76f20-e0cf-4149-971b-f0f35a9305da",
+      "titre": "Tasta by Wood Solution", "sous_titre": "Architecture bois",
+      "public": ["artisan"], "etude": "projets/tasta-wood-solution.html", "vignette": "reel-06"
+    }
+  ]
+}

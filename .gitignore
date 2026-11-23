@@ -1,0 +1,13 @@
+# Construits par build.py
+dist/
+apercu/
+__pycache__/
+# Originaux lourds et fichiers de travail (restent sur l'ordinateur)
+medias/originaux/
+medias/planches/
+medias/ecartes/
+captures/
+skills/
+reference/
+.DS_Store
+_export-github.tar

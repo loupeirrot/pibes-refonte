@@ -1,0 +1,75 @@
+<section class="ouverture ouverture-simple">
+  <div class="cadre ouverture-texte">
+    <h1>Parlons de votre projet</h1>
+    <p class="chapeau">Le plus simple est de m’appeler. Sinon, écrivez-moi : quelques lignes suffisent, même si le projet n’est pas encore clair.</p>
+  </div>
+  <div class="cadre contact-grille">
+    <div class="coordonnees">
+      <ul class="coord-liste">
+        <li><span class="coord-nom">Téléphone</span><a class="lien" href="tel:{{telephone}}">{{telephone_affiche}}</a></li>
+        <li><span class="coord-nom">E-mail</span><a class="lien" href="mailto:{{email}}">{{email}}</a></li>
+        <li><span class="coord-nom">Atelier</span><span>Capbreton (40)</span></li>
+      </ul>
+    </div>
+    <div class="formulaire-bloc">
+      <h2 id="ecrire">M’écrire</h2>
+      <form id="formulaire" action="form-handler.php" method="post" aria-labelledby="ecrire">
+        <fieldset class="champ">
+          <legend>Vous êtes</legend>
+          <div class="radios">
+            <div class="radio"><input type="radio" name="profil" id="profil-entreprise" value="Entreprise ou marque"><label for="profil-entreprise">Une entreprise ou une marque</label></div>
+            <div class="radio"><input type="radio" name="profil" id="profil-artisan" value="Artisan ou commerçant"><label for="profil-artisan">Un artisan ou un commerçant</label></div>
+            <div class="radio"><input type="radio" name="profil" id="profil-artiste" value="Artiste ou association"><label for="profil-artiste">Un artiste ou une association</label></div>
+            <div class="radio"><input type="radio" name="profil" id="profil-autre" value="Autre"><label for="profil-autre">Autre</label></div>
+          </div>
+        </fieldset>
+        <div class="champ">
+          <label for="projet">Votre projet</label>
+          <select id="projet" name="Subject">
+            <option value="">Choisir</option>
+            <option>Mini-documentaire ou film</option>
+            <option>Reels</option>
+            <option>Photos</option>
+            <option>Site internet</option>
+            <option>Communication complète</option>
+            <option>Je ne sais pas encore</option>
+          </select>
+        </div>
+        <div class="champ">
+          <label for="budget">Votre budget <span class="facultatif">(facultatif)</span></label>
+          <select id="budget" name="budget">
+            <option value="">Choisir</option>
+            <option>Moins de 1 000 €</option>
+            <option>1 000 à 3 000 €</option>
+            <option>Plus de 3 000 €</option>
+            <option>Je ne sais pas encore</option>
+          </select>
+        </div>
+        <div class="champ">
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="Name" autocomplete="name" required>
+        </div>
+        <div class="champ">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="Email" autocomplete="email" required>
+        </div>
+        <div class="champ">
+          <label for="tel">Téléphone</label>
+          <input type="tel" id="tel" name="T-l-phone" autocomplete="tel" required>
+        </div>
+        <div class="champ">
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" rows="6"></textarea>
+        </div>
+        <div class="piege" aria-hidden="true">
+          <input type="text" name="honeypot" tabindex="-1" autocomplete="off" value="">
+        </div>
+        <div class="actions">
+          <button class="btn btn-accent" type="submit">Envoyer le message</button>
+        </div>
+        <p class="petit">Ces informations servent uniquement à vous répondre. Voir la <a href="{{racine}}confidentialite.html">politique de confidentialité</a>.</p>
+        <p class="etat" id="etat-formulaire" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>

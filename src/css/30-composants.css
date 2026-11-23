@@ -1,0 +1,486 @@
+/* Composants réutilisés (ARCHITECTURE.md §7, apparence : DESIGN.md « Components ») */
+
+/* ======================================================================
+   EN-TÊTE ET MENU
+   ====================================================================== */
+.entete { position: relative; z-index: 20; background: var(--fond); border-bottom: 1px solid var(--trait); }
+.entete-rangee { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 64px; }
+.marque { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; font-size: .94rem; font-weight: 500; white-space: nowrap; }
+.marque-sigle { flex: none; width: 30px; height: 18px; }
+.menu { display: flex; align-items: center; gap: 28px; }
+.menu-liens { display: flex; flex-wrap: wrap; gap: 0 24px; font-size: .94rem; color: var(--encre-2); }
+.menu-liens a[aria-current="page"] { color: var(--encre); background-size: 100% 1px; }
+.menu-bouton { display: none; }
+
+/* Sous 1080 px la navigation ne tient plus sur une ligne : menu plein écran.
+   Sans JavaScript, les liens restent affichés sous la marque. */
+@media (max-width: 1079.98px) {
+  .entete-rangee { flex-wrap: wrap; height: auto; min-height: 64px; padding-block: 10px; }
+  .menu { flex-wrap: wrap; gap: 8px 24px; }
+  .js .entete-rangee { flex-wrap: nowrap; height: 64px; padding-block: 0; }
+  .js .menu-bouton {
+    display: inline-flex; align-items: center; gap: 12px;
+    min-height: 44px; margin-right: -6px; padding: 0 6px;
+    font-size: .94rem; color: var(--encre-2);
+  }
+  .menu-bouton-traits { position: relative; width: 18px; height: 10px; }
+  .menu-bouton-traits::before, .menu-bouton-traits::after {
+    content: ""; position: absolute; left: 0; right: 0; height: 1.5px;
+    background: currentColor; transition: transform .35s var(--glisse);
+  }
+  .menu-bouton-traits::before { top: 0; }
+  .menu-bouton-traits::after { bottom: 0; }
+  .menu-bouton[aria-expanded="true"] .menu-bouton-traits::before { transform: translateY(4.25px) rotate(45deg); }
+  .menu-bouton[aria-expanded="true"] .menu-bouton-traits::after { transform: translateY(-4.25px) rotate(-45deg); }
+  .js .menu {
+    position: fixed; inset: 64px 0 0; z-index: 19;
+    flex-direction: column; flex-wrap: nowrap; align-items: stretch; justify-content: space-between; gap: 32px;
+    padding: 24px var(--marge) calc(24px + env(safe-area-inset-bottom));
+    background: var(--fond); overflow-y: auto; overscroll-behavior: contain;
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity .35s var(--glisse), transform .35s var(--glisse), visibility 0s .35s;
+  }
+  .js .menu.ouvert { opacity: 1; visibility: visible; transform: none; transition: opacity .35s var(--glisse), transform .35s var(--glisse), visibility 0s; }
+  .js .menu-liens { flex-direction: column; flex-wrap: nowrap; gap: 0; font-size: clamp(1.6rem, 7vw, 2.2rem); line-height: 1.15; letter-spacing: -.03em; color: var(--encre); }
+  .js .menu-liens li { border-bottom: 1px solid var(--trait); }
+  .js .menu-liens a { display: flex; align-items: center; min-height: 60px; padding-block: 8px; background: none; }
+  .js .menu-liens a[aria-current="page"] { color: var(--doux); }
+  .js .menu .menu-appel { min-height: 52px; background: var(--accent); border-color: transparent; color: var(--encre-accent); }
+  .js .entete.menu-ouvert { position: fixed; top: 0; left: 0; right: 0; }
+}
+
+/* ======================================================================
+   OUVERTURE : le seul bloc animé au chargement
+   ====================================================================== */
+.ouverture { padding-top: clamp(36px, 6vw, 72px); }
+.ouverture .chapeau { margin-top: 20px; }
+.ouverture .actions { margin-top: 24px; }
+.ouverture-media { margin-top: clamp(32px, 5vw, 56px); }
+@media (min-width: 960px) {
+  .ouverture-bas { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 24px 48px; margin-top: 28px; }
+  .ouverture-bas .chapeau, .ouverture-bas .actions { margin-top: 0; }
+}
+
+/* ======================================================================
+   CADRES D'IMAGE
+   ====================================================================== */
+.cadre-media { position: relative; overflow: hidden; border-radius: var(--rayon); background: var(--fond-2); }
+.cadre-media img, .cadre-media video { width: 100%; height: 100%; object-fit: cover; }
+.ratio-16-9 { aspect-ratio: 16 / 9; }
+
+/* ======================================================================
+   APPEL : bloc de fin de page
+   ====================================================================== */
+.appel { border-top: 1px solid var(--trait); }
+.appel-grille { display: grid; gap: 28px; }
+.appel-titre { font-size: clamp(2.4rem, 5.4vw, 4rem); line-height: 1.04; letter-spacing: -.04em; }
+.appel-suite p { max-width: 46ch; color: var(--encre-2); }
+.appel .actions { margin-top: 24px; }
+.appel .actions .btn:first-child { flex-basis: 100%; }
+@media (min-width: 640px) {
+  .appel .actions .btn:first-child { flex-basis: auto; }
+}
+@media (min-width: 960px) {
+  .appel-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; gap: 64px; }
+}
+
+/* ======================================================================
+   PIED DE PAGE
+   ====================================================================== */
+.pied { padding-block: 56px 24px; border-top: 1px solid var(--trait); font-size: .84rem; line-height: 1.5; color: var(--doux); }
+.pied-grille { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; }
+.pied-coord { grid-column: 1 / -1; }
+.pied-coord p + p { margin-top: 2px; }
+.pied-nom, .pied-titre { color: var(--encre); font-size: .94rem; font-weight: 500; }
+.pied-titre { margin-bottom: 0; }
+.pied-bas { display: flex; flex-wrap: wrap; align-items: center; gap: 0 24px; margin-top: 32px; padding-top: 12px; border-top: 1px solid var(--trait); }
+.pied-bas p { flex: 1 1 100%; padding-block: 12px 4px; }
+@media (min-width: 640px) {
+  .pied-bas p { flex: 1 1 auto; padding: 0; }
+}
+@media (min-width: 768px) {
+  .pied-grille { grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)); }
+  .pied-coord { grid-column: auto; }
+}
+
+/* ======================================================================
+   BARRE D'ACTION MOBILE : apparaît après l'ouverture, sous 960 px
+   ====================================================================== */
+.barre-mobile {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 15;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  padding: 8px var(--marge) calc(8px + env(safe-area-inset-bottom));
+  background: var(--fond); border-top: 1px solid var(--trait);
+  transform: translateY(100%); visibility: hidden;
+  transition: transform .35s var(--glisse), visibility 0s .35s;
+}
+.barre-mobile.visible { transform: none; visibility: visible; transition: transform .35s var(--glisse), visibility 0s; }
+.barre-mobile .btn { min-height: 44px; }
+@media (min-width: 960px) {
+  .barre-mobile { display: none; }
+}
+
+/* ======================================================================
+   PAGE SIMPLE (404, pages légales)
+   ====================================================================== */
+.simple-liens { display: flex; flex-wrap: wrap; gap: 0 28px; margin-top: 28px; color: var(--encre-2); }
+.ouverture-simple { padding-bottom: var(--section); }
+
+/* ======================================================================
+   PORTES : les deux publics, deux colonnes séparées par un filet, sans boîte
+   ====================================================================== */
+.portes { display: grid; border-block: 1px solid var(--trait); }
+.porte { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding-block: 28px; }
+.porte + .porte { border-top: 1px solid var(--trait); }
+.porte p { max-width: 46ch; color: var(--encre-2); }
+.porte .lien { margin-top: auto; }
+@media (min-width: 768px) {
+  .portes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .porte { padding: 36px 48px 28px 0; }
+  .porte + .porte { padding-left: 48px; padding-right: 0; border-top: 0; border-left: 1px solid var(--trait); }
+}
+
+/* ======================================================================
+   LISTE D'OFFRES : trois rangées séparées par des filets, la première plus grande
+   ====================================================================== */
+.liste-offres { border-top: 1px solid var(--trait); }
+.offre { display: grid; gap: 10px; padding-block: 28px; border-bottom: 1px solid var(--trait); }
+.offre p { max-width: 46ch; color: var(--encre-2); }
+.offre .lien { justify-self: start; }
+.offre-principale { padding-top: 0; border-top: 0; }
+.offre-principale .offre-media { aspect-ratio: 16 / 9; margin-bottom: 18px; }
+.offre-principale h3 { font-size: clamp(1.9rem, 3.2vw, 2.65rem); line-height: 1.1; letter-spacing: -.03em; }
+.liste-offres .offre:first-child { padding-top: 28px; }
+@media (min-width: 960px) {
+  .offre { grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) 15rem; align-items: baseline; gap: 48px; padding-block: 36px; }
+  .offre > .lien { white-space: nowrap; }
+  .offre .lien { justify-self: end; }
+  .offre-principale { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: center; gap: 0 48px; padding-block: 28px; }
+  .offre-principale .offre-media { grid-row: 1 / span 3; margin-bottom: 0; }
+  .offre-principale .offre-texte { display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .offre-principale .lien { justify-self: start; }
+}
+.offre-texte { display: grid; gap: 10px; justify-items: start; }
+@media (hover: hover) {
+  .offre:hover .lien { background-size: 100% 1px; color: var(--encre); }
+}
+
+/* ======================================================================
+   FILM : façade YouTube (image, bouton lecture, légende)
+   ====================================================================== */
+.film-grille { display: grid; gap: 28px 10px; align-items: start; }
+.film-cadre { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: var(--rayon); background: var(--noir); }
+.film-bouton, .film-cadre iframe { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; }
+.film-cadre img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.9); transition: filter .5s var(--glisse), transform 1.2s var(--glisse); }
+.film-bouton:focus-visible { outline-offset: -4px; }
+.film-icone {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+  display: grid; place-items: center; width: 64px; height: 64px;
+  border-radius: 50%; background: var(--encre); color: var(--fond);
+  transition: transform .35s var(--glisse);
+}
+.film-icone svg { width: 20px; height: 20px; margin-left: 3px; }
+@media (hover: hover) {
+  .film-bouton:hover img { filter: brightness(1); transform: scale(1.015); }
+  .film-bouton:hover .film-icone { transform: scale(1.06); }
+}
+.legende { display: block; margin-top: 10px; font-size: .875rem; line-height: 1.4; color: var(--doux); }
+.legende b { font-weight: 500; color: var(--encre); }
+.film .legende { font-size: .94rem; }
+.film-a-cote { aspect-ratio: 16 / 9; }
+@media (min-width: 768px) {
+  .film-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .film-a-cote { aspect-ratio: 80 / 63; }
+}
+
+/* ======================================================================
+   FRISE ET TÊTE DE LECTURE : la méthode, le parcours (motif du site)
+   ====================================================================== */
+.frise-grille { display: grid; gap: 32px; }
+@media (min-width: 960px) {
+  .frise-grille { grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 0 clamp(48px, 7vw, 112px); align-items: start; }
+}
+.frise { position: relative; --gouttiere: 62px; }
+.clip { position: relative; padding: 0 0 40px var(--gouttiere); }
+.clip:last-child { padding-bottom: 4px; }
+.clip::before {
+  content: ""; position: absolute; left: 44px; top: 5px; bottom: 0; width: 2px;
+  background: var(--encre); transition: background-color .35s var(--glisse);
+}
+.frise-active .clip:not(.en-cours)::before { background: var(--trait-2); }
+.clip .libelle { display: block; margin-bottom: 6px; }
+.clip p:not(.libelle) { margin-top: 8px; max-width: 58ch; color: var(--encre-2); font-size: .94rem; line-height: 1.55; }
+.tete { display: none; position: absolute; left: 0; top: 0; z-index: 1; width: 62px; height: 0; will-change: transform; }
+.frise-active .tete { display: block; }
+.tete::after { content: ""; position: absolute; left: 34px; right: 0; top: 0; height: 1px; background: var(--accent); }
+.tete span {
+  position: absolute; left: 0; top: -9px; line-height: 18px;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .08em;
+  color: var(--accent); font-variant-numeric: tabular-nums;
+}
+
+/* ======================================================================
+   GRILLE DE REELS : vignettes 9:16 décalées, aperçu animé, lecteur plein écran
+   ====================================================================== */
+.reels-tete { display: grid; gap: 12px; margin-bottom: clamp(28px, 4vw, 48px); }
+@media (min-width: 960px) {
+  .reels-tete { grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 48px; }
+}
+.grille-reels { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 10px; align-items: start; }
+.grille-reels li:nth-child(even) { margin-top: 28px; }
+.reel { display: block; width: 100%; }
+.reel:focus-visible { outline: none; }
+.reel:focus-visible .reel-cadre { outline: 2px solid var(--accent); outline-offset: 3px; }
+.reel-cadre { position: relative; display: block; overflow: hidden; aspect-ratio: 9 / 16; border-radius: var(--rayon); background: var(--fond-2); isolation: isolate; }
+.reel-zoom { position: absolute; inset: 0; display: block; }
+.reel-zoom img, .reel-zoom video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reel-zoom video { opacity: 0; transition: opacity .6s var(--glisse); }
+.reel.en-lecture .reel-zoom video { opacity: 1; }
+.reel-icone {
+  position: absolute; left: 10px; bottom: 12px; z-index: 1;
+  display: grid; place-items: center; width: 34px; height: 34px;
+  border-radius: 50%; background: var(--encre); color: var(--fond);
+  transition: transform .35s var(--glisse);
+}
+.reel-icone svg { width: 12px; height: 12px; margin-left: 2px; }
+@media (hover: hover) {
+  .reel:hover .reel-icone { transform: scale(1.08); }
+}
+.reel-avance {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; height: 2px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left; opacity: 0;
+  transition: transform .3s linear, opacity .3s var(--glisse);
+}
+.reel.en-lecture.principal .reel-avance { opacity: 1; }
+.suite { margin-top: clamp(24px, 3vw, 36px); }
+@media (min-width: 768px) {
+  .grille-reels { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 10px; }
+  .grille-reels li:nth-child(even) { margin-top: 0; }
+  .grille-reels li:nth-child(3n+2) { margin-top: 64px; }
+}
+
+/* Lecteur plein écran (créé par video.js au premier clic) */
+.lecteur {
+  position: fixed; inset: 0; width: 100vw; height: 100vh; height: 100dvh;
+  max-width: none; max-height: none; margin: 0; border: 0;
+  background: var(--noir); color: var(--encre); overscroll-behavior: contain;
+}
+.lecteur::backdrop { background: var(--noir); }
+.lecteur[open] { display: flex; flex-direction: column; }
+.scene { flex: 1; min-height: 0; display: grid; place-items: center; }
+.scene iframe {
+  border: 0; aspect-ratio: 9 / 16; width: auto;
+  height: min(100vh - 68px, 100vw * 16 / 9);
+  height: min(100dvh - 68px - env(safe-area-inset-bottom), 100vw * 16 / 9);
+}
+.commandes { flex: none; display: flex; align-items: center; gap: 8px; min-height: 68px; padding: 0 12px env(safe-area-inset-bottom); }
+.rond {
+  flex: none; display: grid; place-items: center; width: 48px; height: 48px;
+  border-radius: 50%; border: 1px solid var(--trait-2); color: var(--encre);
+  transition: border-color .2s var(--glisse), transform .2s var(--glisse);
+}
+.rond:active { transform: scale(.96); }
+.rond svg { width: 20px; height: 20px; }
+.rond.fermer { border-color: var(--encre); background: var(--encre); color: var(--fond); }
+@media (hover: hover) {
+  .rond:hover { border-color: var(--encre); }
+}
+.infos { flex: 1; min-width: 0; text-align: center; line-height: 1.25; }
+.infos strong, .infos span { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.infos strong { font-weight: 500; font-size: .9rem; }
+.infos span { font-size: .78rem; color: var(--doux); }
+@media (min-aspect-ratio: 1 / 1) {
+  .lecteur[open] { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; column-gap: 24px; }
+  .commandes { display: contents; }
+  .scene { grid-column: 2; grid-row: 1; }
+  .scene iframe { height: 100vh; height: 100dvh; }
+  .lecteur-prec { grid-column: 1; grid-row: 1; justify-self: end; }
+  .lecteur-suiv { grid-column: 3; grid-row: 1; justify-self: start; }
+  .lecteur .fermer { position: absolute; top: max(16px, env(safe-area-inset-top)); right: max(16px, env(safe-area-inset-right)); }
+  .infos { position: absolute; left: max(24px, env(safe-area-inset-left)); bottom: 24px; max-width: calc(50vw - 100vh * 9 / 32 - 48px); text-align: left; }
+  .infos strong, .infos span { white-space: normal; }
+}
+
+/* ======================================================================
+   CITATION : seulement une citation validée par son auteur
+   ====================================================================== */
+.citation { max-width: 40ch; }
+.citation blockquote p { font-size: 1.4rem; line-height: 1.35; letter-spacing: -.01em; }
+.citation figcaption { margin-top: 14px; font-size: .94rem; color: var(--doux); }
+.citation figcaption b { color: var(--encre); }
+
+/* ======================================================================
+   PHRASE EN GRAND (« Ce que je ne fais pas »)
+   ====================================================================== */
+.phrase { max-width: 26ch; }
+.phrase span { color: var(--doux); }
+
+/* ======================================================================
+   MOUVEMENT
+   Une seule entrée par page : le h1, le chapeau et les boutons de l'ouverture.
+   Aucune apparition au défilement : tout est visible sans JavaScript.
+   ====================================================================== */
+@keyframes monte { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes fondu { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+  .reel-zoom { transition: transform 9s var(--glisse); }
+  .reel.visible .reel-zoom { transform: scale(1.05); }
+  .ouverture h1, .ouverture .chapeau, .ouverture .actions { animation: monte .8s var(--glisse) both; }
+  .ouverture .chapeau { animation-delay: .1s; }
+  .ouverture .actions { animation-delay: .16s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ouverture h1, .ouverture .chapeau, .ouverture .actions { animation: fondu .8s var(--glisse) both; }
+  .barre-mobile, .barre-mobile.visible, .js .menu, .js .menu.ouvert { transform: none; }
+  .btn:active, .rond:active { transform: none; }
+  .tete, .frise-active .tete { display: none; }
+  .film-bouton:hover img, .film-bouton:hover .film-icone, .reel:hover .reel-icone { transform: none; }
+}
+
+/* ======================================================================
+   PAGES D'OFFRE : ouverture sans média, sections en deux colonnes, livrables
+   ====================================================================== */
+.ouverture-texte { padding-bottom: clamp(8px, 2vw, 24px); }
+.scinde { display: grid; gap: 20px; }
+.scinde > h2 { margin-bottom: 0; }
+@media (min-width: 960px) {
+  .scinde { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; }
+}
+.scinde-corps > * + * { margin-top: 20px; }
+.scinde-corps p { max-width: 56ch; color: var(--encre-2); }
+.livrables { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--trait); }
+.livrables li { padding: 16px 0; border-bottom: 1px solid var(--trait); max-width: 62ch; }
+.livrables li strong { font-weight: 500; color: var(--encre); }
+.livrables + p { margin-top: 20px; }
+.voies { display: grid; border-block: 1px solid var(--trait); }
+.voie { padding-block: 28px; }
+.voie + .voie { border-top: 1px solid var(--trait); }
+.voie h3 { margin-bottom: 10px; }
+.voie p { max-width: 46ch; color: var(--encre-2); }
+@media (min-width: 768px) {
+  .voies.trois { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .voies.deux { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .voie { padding: 36px 40px 32px 0; }
+  .voie + .voie { padding-left: 40px; border-top: 0; border-left: 1px solid var(--trait); }
+  .voies.trois .voie:nth-child(3) { padding-right: 0; }
+}
+@media (max-width: 767.98px) { .voies.trois .voie p, .voies.deux .voie p { max-width: none; } }
+.exemple-grille { display: grid; gap: 20px; max-width: 760px; }
+
+/* ======================================================================
+   RÉALISATIONS : grille de films
+   ====================================================================== */
+.grille-films { list-style: none; margin: 0; padding: 0; display: grid; gap: 40px 24px; }
+@media (min-width: 768px) { .grille-films { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.grille-films .film .legende { margin-top: 12px; }
+.grille-films .lien { display: inline-block; margin-top: 10px; }
+.film-sans-image { background: var(--fond-2); border: 1px solid var(--trait); border-radius: var(--rayon); }
+
+/* ======================================================================
+   CONTACT ET À PROPOS
+   ====================================================================== */
+.contact-grille { display: grid; gap: 40px; margin-top: clamp(32px, 5vw, 56px); }
+@media (min-width: 960px) { .contact-grille { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 64px; align-items: start; } }
+.coord-liste { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--trait); }
+.coord-liste li { display: grid; gap: 2px; padding: 16px 0; border-bottom: 1px solid var(--trait); }
+.coord-nom { font-size: .875rem; color: var(--doux); }
+.coord-liste .lien { justify-self: start; word-break: break-word; }
+.formulaire-bloc h2 { margin-bottom: 24px; }
+#formulaire { display: grid; gap: 20px; max-width: 640px; }
+.champ { display: grid; gap: 8px; border: 0; margin: 0; padding: 0; min-width: 0; }
+.champ label, .champ legend { font-size: .94rem; color: var(--encre-2); padding: 0; }
+.facultatif { color: var(--doux); }
+#formulaire input[type=text], #formulaire input[type=email], #formulaire input[type=tel], #formulaire select, #formulaire textarea {
+  width: 100%; min-height: 48px; padding: 10px 0;
+  background: transparent; color: var(--encre);
+  border: 0; border-bottom: 1px solid var(--doux); border-radius: 0;
+  transition: border-color .2s var(--glisse);
+}
+#formulaire textarea { resize: vertical; min-height: 120px; }
+#formulaire input:hover, #formulaire select:hover, #formulaire textarea:hover { border-bottom-color: var(--encre); }
+#formulaire input:focus, #formulaire select:focus, #formulaire textarea:focus { border-bottom-color: var(--accent); }
+#formulaire select { appearance: none; padding-right: 32px; cursor: pointer;
+  background-image: linear-gradient(45deg, transparent 50%, var(--doux) 50%), linear-gradient(135deg, var(--doux) 50%, transparent 50%);
+  background-position: calc(100% - 14px) 50%, calc(100% - 8px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+#formulaire select option { background: var(--fond-2); color: var(--encre); }
+#formulaire ::placeholder { color: var(--doux); }
+.radios { display: grid; gap: 4px 24px; }
+@media (min-width: 640px) { .radios { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.radio { display: flex; align-items: center; gap: 12px; min-height: 44px; }
+.radio input { width: 20px; height: 20px; margin: 0; accent-color: var(--accent); flex: none; }
+.radio label { cursor: pointer; color: var(--encre-2); }
+.radio input:checked + label { color: var(--encre); }
+.piege { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.petit { font-size: .875rem; color: var(--doux); max-width: 56ch; }
+.etat { min-height: 1.4em; color: var(--encre); }
+.etat-erreur { color: var(--encre); border-left: 1px solid var(--encre); padding-left: 12px; }
+#formulaire .btn[disabled] { opacity: .6; cursor: progress; }
+.apropos-grille { display: grid; gap: 32px; align-items: end; }
+@media (min-width: 960px) { .apropos-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 64px; } }
+.portrait { max-width: 420px; aspect-ratio: 960 / 1106; }
+.apropos-grille .chapeau { margin-top: 20px; }
+.outils { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 0; font-family: var(--mono); font-size: .875rem; color: var(--encre-2); }
+.outils li:not(:last-child)::after { content: "·"; margin: 0 12px; color: var(--doux); }
+.ouverture .apropos-grille h1 { font-size: clamp(2.3rem, 4.8vw, 4.25rem); }
+
+/* ======================================================================
+   ACCUEIL (révision du 20/11) : colonne de texte du film, spécialités, différence
+   ====================================================================== */
+.film-texte { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+.film-texte p { max-width: 46ch; color: var(--encre-2); }
+.film-texte h3 { margin-top: 8px; }
+.film-texte .livrables { align-self: stretch; }
+.film-texte .livrables li { padding: 12px 0; }
+.specialites { margin-top: 28px; color: var(--encre-2); max-width: 62ch; }
+.phrase-suite { margin-top: 28px; max-width: 56ch; color: var(--encre-2); }
+
+/* ======================================================================
+   ÉTUDES DE CAS : galerie, liens de suite, questions fréquentes
+   ====================================================================== */
+.ratio-3-2 { aspect-ratio: 3 / 2; }
+.galerie { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.galerie-paysage li { aspect-ratio: 3 / 2; }
+.galerie-portrait li { aspect-ratio: 4 / 5; }
+@media (min-width: 768px) {
+  .galerie-paysage { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .galerie-portrait { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.galerie img { transition: transform .6s var(--glisse); }
+@media (hover: hover) { .galerie li:hover img { transform: scale(1.025); } }
+.suite-liens { display: flex; flex-wrap: wrap; gap: 0 32px; color: var(--encre-2); }
+#suite { padding-block: 0 var(--section); }
+.faq { margin: 0; border-top: 1px solid var(--trait); }
+.faq > div { padding: 18px 0; border-bottom: 1px solid var(--trait); }
+.faq dt { font-weight: 500; color: var(--encre); }
+.faq dd { margin: 6px 0 0; max-width: 56ch; color: var(--encre-2); }
+
+/* ======================================================================
+   PAGES LÉGALES
+   ====================================================================== */
+.legal { padding-top: 0; }
+.legal-bloc { max-width: 68ch; padding-block: 24px; border-top: 1px solid var(--trait); }
+.legal-bloc h2 { font-size: 1.25rem; margin-bottom: 10px; }
+.legal-bloc p { color: var(--encre-2); }
+.legal-bloc p + p { margin-top: 10px; }
+
+/* ======================================================================
+   PAGE DE LIENS (bio des réseaux)
+   ====================================================================== */
+.liens-page { min-height: 100svh; display: grid; place-items: start center; padding: clamp(40px, 8vh, 88px) var(--marge) 48px; }
+.liens-cadre { width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.liens-marque { display: inline-flex; padding: 10px; }
+.liens-marque svg { width: 48px; height: 29px; }
+.liens-page h1 { margin-top: 20px; font-size: clamp(1.6rem, 6vw, 2rem); line-height: 1.15; letter-spacing: -.03em; }
+.liens-page .chapeau { margin-top: 10px; }
+.liens-liste { width: 100%; display: grid; gap: 10px; margin-top: 32px; }
+.liens-liste .btn { width: 100%; min-height: 52px; }
+.liens-metiers, .liens-reseaux { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 20px; margin-top: 28px; color: var(--encre-2); font-size: .94rem; }
+.liens-metiers p { width: 100%; color: var(--doux); }
+.liens-metiers .lien, .liens-reseaux .lien { display: inline-block; padding-block: 12px; }
+.film-gauche .citation { margin-top: clamp(32px, 4vw, 48px); }
+@media (min-width: 768px) { .film-grille:has(.film-texte) { column-gap: clamp(32px, 4vw, 56px); } }
+
+/* Vidéo d'ouverture : posée sur l'image fixe, elle n'apparaît (fondu) qu'une fois lancée */
+.ouverture-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s var(--glisse); }
+.ouverture-video.joue { opacity: 1; }

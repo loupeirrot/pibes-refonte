@@ -1,0 +1,38 @@
+# Aperçu du site sur GitHub Pages à chaque envoi sur main.
+# Construit avec build.py --apercu (noindex partout, vidéo d'ouverture servie depuis medias/web/).
+name: Aperçu GitHub Pages
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  construire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Construire l'aperçu
+        run: python3 build.py --apercu
+      - name: Recette (version de test)
+        run: python3 build.py --staging && python3 verifier.py --lot 8 --staging
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apercu
+  publier:
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - id: deploiement
+        uses: actions/deploy-pages@v4

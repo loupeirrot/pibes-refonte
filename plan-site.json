@@ -1,0 +1,287 @@
+{
+  "_lisez_moi": "Source unique de vérité pour les pages, les balises SEO, les redirections et les budgets. build.py et verifier.py lisent ce fichier. Ne jamais dupliquer ces valeurs ailleurs.",
+  "site": {
+    "origine": "https://www.pibes.fr",
+    "langue": "fr",
+    "nom": "Pierre Bargelès",
+    "email": "pierre.bargeles@gmail.com",
+    "telephone": "+33670718405",
+    "telephone_affiche": "06 70 71 84 05",
+    "ville": "Capbreton",
+    "code_postal": "40130",
+    "image_partage": "assets/img/partage.jpg",
+    "video_ouverture": ""
+  },
+  "hotes_medias_autorises": [
+    "vz-25e90935-e10.b-cdn.net",
+    "i.ytimg.com"
+  ],
+  "serveur_a_conserver": [
+    "portfolio/",
+    "form-handler.php"
+  ],
+  "budgets_octets": {
+    "html_max": 100000,
+    "css_total_max": 80000,
+    "js_total_max": 60000,
+    "image_max": 300000,
+    "page_locale_max": 1200000,
+    "accueil_locale_max": 1500000
+  },
+  "pages": [
+    {
+      "fichier": "404.html",
+      "lot": 1,
+      "gabarit": "simple",
+      "titre": "Page introuvable | Pierre Bargelès",
+      "description": "Cette page n'existe pas ou a été déplacée. Retrouvez les films, les reels et les offres de Pierre Bargelès, vidéaste à Capbreton, depuis l'accueil.",
+      "h1": "Cette page n'existe pas",
+      "sitemap": false,
+      "noindex": true
+    },
+    {
+      "fichier": "index.html",
+      "lot": 2,
+      "gabarit": "accueil",
+      "titre": "Pierre Bargelès | Vidéaste à Capbreton, Landes et Pays basque",
+      "description": "Vidéaste à Capbreton, 20 ans d'audiovisuel dont 18 à France Télévisions : films, reels, photos et sites internet, tournés et montés avec le soin d'un film.",
+      "h1": "Une image à la hauteur de votre savoir-faire, du film jusqu'à votre site."
+    },
+    {
+      "fichier": "mini-documentaire.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Mini-documentaire d'entreprise, portrait filmé | Pierre Bargelès",
+      "description": "Un film de 3 à 15 minutes sur votre entreprise, votre métier ou votre œuvre, décliné en reels et en photos. Écriture, tournage et montage par un seul interlocuteur.",
+      "h1": "Le mini-documentaire : un film qui raconte vraiment votre métier"
+    },
+    {
+      "fichier": "communication-globale.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Communication globale : film, photos, site | Pierre Bargelès",
+      "description": "Un tournage, tous vos supports : film de présentation, reels, banque de photos, site internet et publication programmée. Landes et Pays basque.",
+      "h1": "Un tournage, tous vos supports de communication"
+    },
+    {
+      "fichier": "reels.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Reels pour entreprises et marques, Landes | Pierre Bargelès",
+      "description": "Des reels tournés chez vous, montés et étalonnés comme des films. À l'unité ou par journée de tournage, livrés prêts à publier ou programmés pour vous.",
+      "h1": "Des reels tournés chez vous, montés comme des films"
+    },
+    {
+      "fichier": "artisans.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Vidéo et photo pour artisans et commerces | Pierre Bargelès",
+      "description": "Artisans, commerçants, indépendants : montrez votre savoir-faire avec un reel, des photos et une vidéo de présentation. Un devis clair, adapté à votre budget.",
+      "h1": "Artisans et commerçants : montrez votre savoir-faire"
+    },
+    {
+      "fichier": "video-immobiliere.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Vidéo immobilière, Landes et Pays basque | Pierre Bargelès",
+      "description": "Vidéos et photos de biens, de programmes neufs et de chantiers pour agences, promoteurs et architectes. Tournage, montage et formats pour les réseaux sociaux.",
+      "h1": "Vidéo immobilière : biens, programmes neufs et chantiers"
+    },
+    {
+      "fichier": "tatouage.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Vidéo et photo pour tatoueurs et salons | Pierre Bargelès",
+      "description": "Photos nettes de vos pièces, reel de votre salon, présentation filmée et site : montrez votre style à ceux qui cherchent leur tatoueur. Landes et Pays basque.",
+      "h1": "Tatoueurs : montrez votre style avant le premier rendez-vous"
+    },
+    {
+      "fichier": "sante.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Vidéo et photo pour la santé, congrès, cabinets | Pierre Bargelès",
+      "description": "Captation de congrès, photos et vidéos de cabinets et d'établissements de santé, site internet : des contenus clairs et soignés, dans le respect de vos règles.",
+      "h1": "Santé : congrès, cabinets et établissements"
+    },
+    {
+      "fichier": "projets.html",
+      "lot": 4,
+      "gabarit": "realisations",
+      "titre": "Réalisations : films, reels et sites | Pierre Bargelès",
+      "description": "Documentaires, films d'entreprise, reels et sites internet réalisés pour des artistes, des entreprises et des artisans des Landes et du Pays basque.",
+      "h1": "Réalisations"
+    },
+    {
+      "fichier": "projets/optima-delwood.html",
+      "lot": 4,
+      "gabarit": "etude",
+      "titre": "Optima by Delwood, le film | Pierre Bargelès",
+      "description": "Quand un hélicoptère devient une œuvre d'art : le film réalisé pour Optima avec l'artiste Delwood, et les contenus qui en ont été tirés.",
+      "h1": "Optima by Delwood : quand un hélicoptère devient une œuvre d'art",
+      "peut_attendre": "etude"
+    },
+    {
+      "fichier": "projets/ziwig.html",
+      "lot": 4,
+      "gabarit": "etude",
+      "titre": "Laboratoire Ziwig, film 2025 | Pierre Bargelès",
+      "description": "Le film réalisé en 2025 pour le laboratoire Ziwig : présenter une innovation scientifique de façon claire et sobre, du tournage au montage final.",
+      "h1": "Laboratoire Ziwig : filmer une innovation",
+      "peut_attendre": "etude"
+    },
+    {
+      "fichier": "projets/tasta-wood-solution.html",
+      "lot": 4,
+      "gabarit": "etude",
+      "titre": "Tasta by Wood Solution, reels et photos | Pierre Bargelès",
+      "description": "Reels et photos du projet Tasta pour Wood Solution, à Angresse (Landes) : montrer une réalisation en bois, du détail à la vue d'ensemble.",
+      "h1": "Tasta by Wood Solution : une réalisation bois en reels et en photos",
+      "peut_attendre": "etude"
+    },
+    {
+      "fichier": "a-propos.html",
+      "lot": 5,
+      "gabarit": "simple",
+      "titre": "À propos de Pierre Bargelès, vidéaste à Capbreton (Landes)",
+      "description": "20 ans d'audiovisuel, dont 18 à France Télévisions. Je réalise, je tourne, je monte et j'étalonne moi-même, pour des entreprises, des artistes et des artisans.",
+      "h1": "20 ans d'audiovisuel, dont 18 à France Télévisions"
+    },
+    {
+      "fichier": "contact.html",
+      "lot": 5,
+      "gabarit": "contact",
+      "titre": "Contact | Pierre Bargelès, vidéaste à Capbreton (Landes)",
+      "description": "Parlons de votre projet de film, de reels ou de site internet. Par téléphone, par e-mail ou avec le formulaire. Capbreton, Landes et Pays basque.",
+      "h1": "Parlons de votre projet"
+    },
+    {
+      "fichier": "mentions-legales.html",
+      "lot": 5,
+      "gabarit": "simple",
+      "titre": "Mentions légales | Pierre Bargelès",
+      "description": "Mentions légales du site pibes.fr : éditeur, entreprise individuelle Pierre Bargelès, hébergeur, propriété intellectuelle et crédits des images.",
+      "h1": "Mentions légales",
+      "sitemap": false,
+      "peut_attendre": "legal"
+    },
+    {
+      "fichier": "confidentialite.html",
+      "lot": 5,
+      "gabarit": "simple",
+      "titre": "Politique de confidentialité | Pierre Bargelès",
+      "description": "Quelles données le site pibes.fr collecte avec son formulaire de contact, pourquoi, combien de temps elles sont gardées et comment les faire supprimer.",
+      "h1": "Politique de confidentialité",
+      "sitemap": false,
+      "peut_attendre": "legal"
+    },
+    {
+      "fichier": "liens.html",
+      "lot": 5,
+      "gabarit": "liens",
+      "titre": "Liens | Pierre Bargelès, vidéaste à Capbreton",
+      "description": "Tous les liens de Pierre Bargelès, vidéaste à Capbreton : réalisations, offres, contact, Instagram, LinkedIn, Facebook et portfolio.",
+      "h1": "Pierre Bargelès, vidéaste à Capbreton",
+      "sitemap": false,
+      "noindex": true
+    }
+  ],
+  "redirections": [
+    {
+      "de": "/about.html",
+      "vers": "/a-propos.html"
+    },
+    {
+      "de": "/services.html",
+      "vers": "/"
+    },
+    {
+      "de": "/services/production-video.html",
+      "vers": "/mini-documentaire.html"
+    },
+    {
+      "de": "/services/contenus-reseaux-sociaux.html",
+      "vers": "/reels.html"
+    },
+    {
+      "de": "/services/photographie.html",
+      "vers": "/communication-globale.html"
+    },
+    {
+      "de": "/services/creation-de-sites-web.html",
+      "vers": "/communication-globale.html"
+    },
+    {
+      "de": "/services/starter-pack-entreprise.html",
+      "vers": "/communication-globale.html"
+    },
+    {
+      "de": "/services/video-immobiliere.html",
+      "vers": "/video-immobiliere.html"
+    },
+    {
+      "de": "/services/contenus-fpv-drone.html",
+      "vers": "/"
+    },
+    {
+      "de": "/services/formation-coaching.html",
+      "vers": "/"
+    }
+  ],
+  "disparues_410": [
+    "/licenses-copy.html",
+    "/401.html",
+    "/template-pages/",
+    "/elements/"
+  ],
+  "urls_conservees": [
+    "/",
+    "/index.html",
+    "/projets.html",
+    "/contact.html",
+    "/portfolio/"
+  ],
+  "chaines_interdites": [
+    "contact@play.com",
+    "(471)",
+    "los+angeles",
+    "los angeles",
+    "lorem ipsum",
+    "ecommerce-template",
+    "data-wf-",
+    "[à fournir",
+    "[a fournir",
+    "[à confirmer",
+    "[a confirmer",
+    "todo",
+    "licenses"
+  ],
+  "mots_a_eviter": [
+    "percutant",
+    "sublimer",
+    "booster",
+    "n'hésitez pas",
+    "sur-mesure",
+    "sur mesure",
+    "clé en main",
+    "clés en main",
+    "passionné",
+    "innovant",
+    "sublime",
+    "incontournable",
+    "au cœur de",
+    "de a à z",
+    "révolutionn"
+  ],
+  "jetons_obligatoires": {
+    "--fond": "#12110f",
+    "--fond-2": "#181614",
+    "--noir": "#0a0908",
+    "--encre": "#efebe4",
+    "--doux": "#a29d94",
+    "--accent": "#f2a900",
+    "--accent-vif": "#ffb91c",
+    "--encre-accent": "#161107",
+    "--rayon": "4px"
+  },
+  "_modifications": "20/11/2026 : h1 et description de l'accueil changés à la demande de Pierre (ton jugé froid, accroche refusée) ; pages tatouage.html, sante.html et liens.html ajoutées à sa demande."
+}

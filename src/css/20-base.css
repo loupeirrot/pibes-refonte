@@ -1,0 +1,140 @@
+/* Base : polices, remise à zéro, typographie, cadre, boutons, liens, surfaces du navigateur */
+
+@font-face {
+  font-family: "Geist";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/geist-latin-wght-normal.woff2") format("woff2-variations"), url("../fonts/geist-latin-wght-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Geist Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/geist-mono-latin-wght-normal.woff2") format("woff2-variations"), url("../fonts/geist-mono-latin-wght-normal.woff2") format("woff2");
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--fond);
+  scrollbar-color: var(--trait-2) var(--fond);
+  scroll-padding-top: 16px;
+}
+html.sans-defilement { overflow: hidden; }
+body {
+  min-height: 100vh;
+  background: var(--fond);
+  color: var(--encre);
+  font: 400 1.03rem/1.6 var(--police);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+  caret-color: var(--accent);
+}
+img, video, svg, iframe { display: block; max-width: 100%; }
+img, video { height: auto; }
+ul, ol { list-style: none; }
+a { color: inherit; text-decoration: none; text-underline-offset: .2em; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+input, select, textarea { font: inherit; color: inherit; }
+b, strong { font-weight: 500; }
+
+::selection { background: var(--accent); color: var(--encre-accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* Lien d'évitement : invisible jusqu'au premier Tab */
+.evitement {
+  position: absolute; left: 16px; top: -64px; z-index: 30;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px;
+  border-radius: 999px; background: var(--accent); color: var(--encre-accent);
+  font-size: .94rem; font-weight: 500;
+}
+.evitement:focus { top: 10px; }
+
+/* ---------- Typographie ---------- */
+h1, h2, h3 { font-weight: 500; text-wrap: balance; }
+p, li { text-wrap: pretty; }
+.display, .ouverture h1 {
+  font-size: clamp(2.2rem, 11.4vw, 6rem);
+  line-height: 1;
+  letter-spacing: -.04em;
+}
+.display span, .ouverture h1 span { display: block; font-weight: 300; color: var(--doux); }
+.headline {
+  font-size: clamp(2.4rem, 5.4vw, 4rem);
+  line-height: 1.04;
+  letter-spacing: -.04em;
+}
+h2, .titre {
+  font-size: clamp(1.9rem, 3.2vw, 2.65rem);
+  line-height: 1.1;
+  letter-spacing: -.03em;
+}
+h3, .sous-titre {
+  font-size: 1.4rem;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+.section-titre { margin-bottom: clamp(24px, 3vw, 36px); }
+.chapeau { max-width: 46ch; color: var(--encre-2); }
+.texte { max-width: 65ch; }
+.petit { font-size: .94rem; line-height: 1.55; }
+.secondaire { color: var(--encre-2); }
+.libelle {
+  font-family: var(--mono);
+  font-size: .72rem;
+  font-weight: 400;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--doux);
+  font-variant-numeric: tabular-nums;
+}
+.accent { color: var(--accent); }
+
+/* ---------- Mise en page ---------- */
+.cadre { width: 100%; max-width: var(--largeur); margin-inline: auto; padding-inline: var(--marge); }
+.section { padding-block: var(--section); }
+/* Deux sections sur le même fond se partagent un seul intervalle */
+.section:not(.bande) + .section:not(.bande):not(.appel) { padding-top: 0; }
+.bande { background: var(--fond-2); border-block: 1px solid var(--trait); }
+.visuellement-cache {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ---------- Liens : le trait se dessine de gauche à droite ---------- */
+.lien {
+  background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat;
+  background-origin: content-box;
+  transition: background-size .35s var(--glisse), color .2s var(--glisse);
+}
+.lien:hover, .lien:focus-visible { background-size: 100% 1px; color: var(--encre); }
+/* Liens hors du texte courant : cible tactile de 44 px, le trait reste sous le mot */
+.lien-cible, .menu-liens a, .pied a.lien, .simple-liens a, .porte .lien, .offre .lien, .suite .lien {
+  display: inline-block; padding-block: 12px; line-height: 1.5;
+}
+.texte a:not(.btn) { text-decoration: underline; text-decoration-color: var(--trait-2); text-decoration-thickness: 1px; }
+
+/* ---------- Boutons : une seule paire sur tout le site ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 46px; padding: 0 22px;
+  border: 1px solid transparent; border-radius: 999px;
+  font-size: .94rem; font-weight: 500; line-height: 1.2; text-align: center;
+  white-space: nowrap;
+  transition: background-color .2s var(--glisse), border-color .2s var(--glisse), color .2s var(--glisse), transform .2s var(--glisse);
+}
+.btn:active { transform: translateY(1px); }
+.btn-accent { background: var(--accent); color: var(--encre-accent); }
+.btn-accent:hover { background: var(--accent-vif); }
+.btn-trait { border-color: var(--trait-2); color: var(--encre); }
+.btn-trait:hover { border-color: var(--encre); }
+.actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.actions .btn { flex: 1 1 calc(50% - 4px); }
+@media (min-width: 640px) {
+  .actions .btn { flex: 0 0 auto; }
+}

@@ -1,0 +1,109 @@
+# Refonte pibes.fr : suivi
+
+Ce fichier est la mémoire du projet entre deux sessions. Chaque modèle le lit en arrivant et le met à jour en partant.
+
+## État des lots
+
+| Lot | Contenu | État | Recette | Date |
+|---|---|---|---|---|
+| 0 | Matière à fournir | en cours | | |
+| 1 | Socle technique | terminé | RECETTE OK (0 erreur, 22 alertes : liens vers des pages des lots suivants) | 19/11/2026 |
+| 2 | Accueil | terminé (blocs F3 et F4 absents, voir journal) | RECETTE OK (0 erreur, 46 alertes : liens vers des pages des lots suivants) | 19/11/2026 |
+| 3 | Pages d'offre | terminé (+ tatouage.html, sante.html ; F11 et F13 intégrés) | RECETTE OK (0 erreur, 0 alerte, aucune page en attente) | 20/11/2026 |
+| 4 | Réalisations et vidéo | terminé (3 études de cas construites) | RECETTE OK (0 erreur, 0 alerte, aucune page en attente) | 20/11/2026 |
+| 5 | À propos, contact, pages légales | terminé (pages légales F7, liens.html) | RECETTE OK (0 erreur, 0 alerte, aucune page en attente) | 20/11/2026 |
+| 6 | Images | terminé | RECETTE OK (0 erreur, 0 alerte, aucune page en attente) | 20/11/2026 |
+| 7 | Serveur et référencement | terminé (`VideoObject` non ajouté : dates de film inconnues) | RECETTE OK (0 erreur, 0 alerte, aucune page en attente) | 20/11/2026 |
+| 8 | Recette et mise en ligne | `--staging` et recette finale OK ; reste l'envoi en `/v2/`, le test sur le serveur, PageSpeed (F9, F10) | RECETTE OK (0 erreur, 0 alerte, aucune page en attente) | 20/11/2026 |
+
+États possibles : à faire · en cours · bloqué (dire par quoi) · terminé (recette OK).
+
+## Matière à fournir par Pierre (lot 0)
+
+Cocher `[x]` quand c'est déposé ou répondu. Un modèle ne coche jamais à la place de Pierre.
+
+- [ ] **F1** (facultatif) Code de la page portfolio en ligne : copier son `index.html` dans `refonte/reference/portfolio/`. Les valeurs de sa charte sont déjà dans `DESIGN.md` ; le fichier évite de réécrire le script de la grille de reels et du lecteur.
+- [ ] **F2** Copie de `form-handler.php` (depuis le serveur OVH) dans `refonte/reference/`. Permettra plus tard d'ajouter de vrais champs au formulaire.
+- [ ] **F3** Delwood : la citation validée par lui (brouillon proposé : « Je ne pensais pas avoir un jour une vidéo aussi pro. Le suivi a été carré du début à la fin, avec un vrai sens du détail. ») ; son accord pour être le cas à la une ; le nombre d'œuvres réalisées pour Optima ; une phrase qui dit ce qu'est Optima ; la liste exacte de ce qui a été livré.
+  - 20/11/2026, Pierre : contexte et livrables d'Optima fournis (voir `medias/fiches/optima-delwood.md`), intégrés à l'accueil et à l'étude. Puis citation de Delwood et présentation d'Optima Aero fournies (20/11), intégrées. Citation légèrement retouchée (« ! » remplacé par un point, virgule ajoutée) : à faire valider par Delwood.
+- [ ] **F4** Vidéo d'ouverture de l'accueil : un extrait horizontal 16:9 de 10 à 20 secondes, sans son, envoyé sur Bunny Stream. Donner son identifiant, et déposer un photogramme dans `medias/originaux/ouverture.jpg`.
+  - 23/11/2026, Pierre : `medias/originaux/Video site 1.mov` (10,5 s, 1080p25, sans son). Versions web dans `medias/web/` (`ouverture-1080.mp4` 3,5 Mo, `ouverture-720.mp4` 1,8 Mo, H.264, sans son) et photogramme `ouverture.jpg`. Pour la mise en ligne : envoyer `ouverture-1080.mp4` sur Bunny Stream (MP4 Fallback activé), puis mettre son identifiant dans `plan-site.json` > `site.video_ouverture`. Sans identifiant, l'accueil garde l'image fixe.
+- [ ] **F5** Images dans `refonte/medias/originaux/` : ton logo (le sigle affiché en haut de la page portfolio, en SVG), ton portrait (celui du portfolio), un photogramme par film (Optima, Ziwig), et pour chaque projet montré quelques photos. Noms de fichiers simples, sans accent ni espace.
+  - 19/11/2026, reçu dans `medias/originaux/` (renommés) : `logo.svg` (sigle « PIERRE B. », remplissage blanc écrit en dur : le passer en `currentColor` à l'intégration), `portrait.jpg` (2603 × 3000, fond sombre), `optima-miniature.png` (miniature YouTube 2752 × 1536, **titre « OPTIMA BY DELWOOD » incrusté**). La miniature sert uniquement d'image au cadre du film Optima ; ne jamais la mettre en ouverture de l'accueil ni la recadrer pour cacher le titre. Manquent : les photos des projets autres qu'Optima.
+  - 19/11/2026, photogrammes d'Optima copiés depuis la page de présentation Delwood/Optima (`Delwood/delwood-optima-v2/img/`, 1500 × 843, déjà étalonnés) : `optima-atelier.jpg` (Delwood qui peint un carénage), `optima-oeuvre-bleue.jpg`, `optima-oeuvre-noir-blanc.jpg` (les deux œuvres), `optima-helicoptere.jpg` (EC135 dans le hangar), `optima-delwood-interview.jpg`, `optima-interview-hangar.jpg` (interviews). Plus `sigle-pb.png`, le sigle « PB » blanc de la page portfolio (favicon et marque).
+  - Choix pour l'accueil : ouverture = `optima-atelier.jpg` (le métier filmé, c'est la promesse) ; cadre du film Optima = `optima-miniature.png` ; section « Un film, et tout ce qui en découle » = `optima-oeuvre-noir-blanc.jpg` et `optima-oeuvre-bleue.jpg`. Les interviews servent plus tard à l'étude de cas.
+  - Images de 1500 px de large : `optimiser.py` ne doit pas les agrandir (largeur 1600 ignorée pour elles).
+  - Les images où une personne est reconnaissable (atelier, interviews) ne sont mises en ligne qu'avec l'accord de la personne : Delwood (F3), personne interviewée dans le hangar (F8). Sans accord coché, l'ouverture prend `optima-oeuvre-noir-blanc.jpg`.
+  - 19/11/2026, Pierre : « J'ai son accord » (Delwood) ; ses contrats l'autorisent à utiliser les images de ses projets pour son portfolio et sa communication. Les images d'Optima, interviews comprises, peuvent donc être mises en ligne. L'ouverture de l'accueil prend `optima-atelier.jpg`. Restent à fournir pour F3 : la citation validée par Delwood, le nombre d'œuvres, la phrase sur Optima, la liste des livrables.
+- [ ] **F6** Vidéos SNU 64, La Kademie et Gabena Architecture : les envoyer sur Bunny Stream ou YouTube et donner les identifiants. Donner l'année du projet Gabena. Sans cela, ces projets ne figurent pas sur le nouveau site.
+- [ ] **F7** Pages légales : l'adresse à afficher dans les mentions légales, la confirmation du numéro SIRET (celui du gabarit de devis), la durée pendant laquelle tu gardes les messages reçus, et ta relecture des deux pages.
+  - 20/11/2026, Pierre : EI, 58 avenue de l'Atlantique 40130 Capbreton, SIRET 937 968 832 00017, conservation 1 an, hébergeur OVH confirmé. Pages construites ; à relire par Pierre.
+- [x] **F8** Accord des clients cités pour apparaître sur le site (Ziwig, Wood Solution, Le Stud, Arthur Lasson, et FL Nutrition si tu veux le montrer). Réponse de Pierre le 19/11/2026 : couvert par une clause de ses contrats.
+- [ ] **F9** Place libre chez OVH : 30 Mo pour le dossier de test `/v2/`.
+  - 20/11/2026, Pierre : plus de place sur l'hébergement OVH. Le site complet pèse 6 Mo (`dist/`). Bloque le lot 8.
+- [ ] **F10** Search Console : propriété `https://www.pibes.fr` validée.
+- [ ] **F11** Tes conditions habituelles, pour les questions fréquentes : nombre de séries de retouches comprises, acompte, cession des droits, délai habituel de livraison.
+  - 20/11/2026, Pierre : 2 séries de retouches en général (adaptable), acompte 30 %, cession des droits négociable selon le projet, délais rapides, priorité à l'immobilier sous mandat exclusif limité dans le temps. Intégré (FAQ de mini-documentaire, page reels, page immobilière).
+- [ ] **F12** Fiches des études de cas (modèle ci-dessous), une par projet : Optima by Delwood, Ziwig, Tasta by Wood Solution.
+  - 20/11/2026, Pierre : réponses pour les trois projets, rangées dans `medias/fiches/`. Photos Tasta et Ziwig choisies dans ses dossiers d'export (planches dans `medias/planches/`). Aucune citation client fournie : bloc citation absent des trois études.
+- [ ] **F13** Composition des trois formats de mini-documentaire (jours de tournage, durée du film, nombre de reels et de photos), sans prix.
+  - 20/11/2026, Pierre : pas de formats figés (jours, durée, nombre de vidéos et de photos adaptés à chaque projet). Le bloc « Trois formats » devient « Un projet à votre mesure » sur la page mini-documentaire.
+- [ ] **F14** Année de début de ton activité indépendante, si tu veux l'afficher dans « À propos ».
+
+### Modèle de fiche d'étude de cas (F12)
+
+Créer un fichier `refonte/medias/fiches/<projet>.md` et répondre en quelques lignes :
+1. Qui est le client et que fait-il ?
+2. Que voulait-il au départ ?
+3. Qu'as-tu fait, concrètement (jours de tournage, lieux, particularités) ?
+4. Qu'as-tu livré, exactement (film de quelle durée, combien de reels, de photos, autre) ?
+5. Que s'est-il passé ensuite (vues, retombées, usage par le client) ? Seulement des faits vérifiables ; sinon laisser vide.
+6. Une phrase du client, et son accord pour la publier.
+
+## Décisions prises (ne pas rediscuter sans Pierre)
+
+- 16/11/2026 : pas de prix affichés en version 1.
+- 16/11/2026 : les artisans restent une cible, avec leur propre page.
+- 16/11/2026 : drone et FPV retirés de l'offre affichée.
+- 16/11/2026 : Pierre ne propose pas de gestion de réseaux sociaux ; il propose la publication programmée.
+- 16/11/2026 : site statique hébergé chez OVH, vidéos sur Bunny Stream et YouTube.
+- 16/11/2026 : l'identité de la page portfolio est figée (`DESIGN.md`). Les skills Impeccable et Taste servent à l'exécuter mieux ; leurs règles contraires à cette identité sont écartées (table en fin de `DESIGN.md`).
+
+## Questions pour Pierre
+
+(Les modèles écrivent ici ce qui les bloque ou ce qui leur paraît incohérent. Une question par ligne, datée.)
+
+- 19/11/2026, lot 1 : les `h1` gardent l'apostrophe droite (') du plan, car `verifier.py` compare le `h1` à `plan-site.json` à la lettre ; le reste des textes prend l'apostrophe courbe (’) comme le veut `CONTENU.md`. Pour avoir ’ dans les titres aussi, il faudrait corriger les `h1` dans `plan-site.json` (fichier que les modèles ne modifient pas).
+- 19/11/2026, lot 1 : la navigation complète (5 liens + bouton) ne tient pas sur une ligne sous 1080 px (à 1024 px il manque environ 20 px). Le menu plein écran s'applique donc sous 1080 px, et non sous 768 px comme l'écrit `DESIGN.md`. À valider.
+- 19/11/2026, lot 1 : pour tenir la règle « un seul élément ambre par écran », le bouton « Parler de votre projet » de l'en-tête est en contour (il passe en ambre seulement dans le menu mobile ouvert), et les boutons du bloc de fin de page et de la barre mobile sont en contour (dans le bloc de fin de page, l'ambre est le mot « projet »). Si tu préfères un bouton ambre partout, le dire : c'est une ligne de CSS par bouton.
+- 19/11/2026, lot 1 : le pied de page pointe vers `mentions-legales.html` et `confidentialite.html` (lot 5). Sans F7, ces pages resteront « en attente » et la recette du lot 5 exigera de retirer les liens : F7 est donc à fournir avant le lot 5.
+- 19/11/2026, lot 1 : `og:image` pointe vers `assets/img/partage.jpg`, qui sera produit au lot 6 : l'aperçu des liens partagés reste vide jusque-là.
+- 19/11/2026, lot 2 (traité au lot 6 par une version 1500 px) : les photogrammes d'Optima font 1500 px de large ; selon la consigne F5, seules les versions 480 et 960 sont produites. L'image d'ouverture s'affiche sur 1144 px à 1440 px de large : la version 960 est un peu agrandie, donc légèrement moins nette. Proposition pour le lot 6 : produire aussi une version à la largeur d'origine (`-1500.webp`, environ 100 Ko) pour les images de plus de 960 px. À valider.
+- 19/11/2026, lot 2 : le lecteur plein écran des reels reprend celui de la page portfolio (lecteur Bunny chargé en `iframe` au clic, avec le son), qui fonctionne déjà en ligne. Une lecture directe du MP4 aurait demandé `play_720p.mp4`, dont l'existence n'a pas pu être vérifiée (le CDN Bunny n'est pas joignable depuis le poste de travail). Aucun `<iframe>` dans le HTML. Les aperçus animés de 8 secondes ne sont donc vérifiables que sur le site de test (lot 8).
+- 19/11/2026, lot 2 : la section « Un film, et tout ce qui en découle » est construite sans ses blocs F3 : ni texte de contexte, ni liste « Tiré du même tournage » (elle contient un élément à confirmer, donc elle est laissée entière hors de la page, y compris « le film » et « le reel Posca by Delwood »), ni citation, ni lien vers l'étude de cas (F12). Il reste le cadre du film et une image de l'œuvre noir et blanc. Dès que F3 est fourni, ajouter ces blocs dans la colonne de droite.
+- 19/11/2026, lots 3 à 8 : les liens « Mentions légales » et « Confidentialité » du pied de page ne sont générés que si les pages existent (`build.py`). Dès que F7 est fourni, créer les deux pages : les liens apparaissent seuls.
+- 19/11/2026, lot 3 : absents faute de matière : « Trois formats » (F13), « Questions fréquentes » et la ligne retouches de « Ce qui est compris » (F11), exemple de la page communication globale (F8 : Le Stud ou FL Nutrition à confirmer), vidéo Gabena de la page vidéo immobilière (F6). La page vidéo immobilière montre les reels du public `immobilier` (« Complexe immobilier »).
+- 19/11/2026, lot 4 : la carte du film Ziwig n'a pas d'image (photogramme manquant, F5) : cadre sombre avec le bouton lecture. Le gabarit `etude` et les 3 études ne sont pas construits (fiches F12 vides) ; ajouter `{{films}}` fait déjà apparaître le lien « Lire l'étude de cas » quand la page existe.
+- 19/11/2026, lot 5 : `a-propos.html` sans l'année de début d'activité (F14). `contact.html` : le formulaire envoie les six champs du contrat (vérifié dans un navigateur avec une réponse simulée) ; la phrase « Voir la politique de confidentialité » est omise tant que la page n'existe pas.
+- 19/11/2026, lot 6 : `optimiser.py` produit en plus une version à la largeur d'origine pour les images entre 960 et 1600 px (`-1500.webp`), ce qui répond à ma question du lot 2 ; l'ouverture de l'accueil l'utilise. Les photogrammes d'interview sont convertis mais pas encore utilisés dans une page.
+
+- 20/11/2026, plan : à la demande de Pierre (accroche refusée, ton jugé froid), `plan-site.json` a été modifié : `h1` et description de l'accueil, ajout de `tatouage.html`, `sante.html` (lot 3) et `liens.html` (lot 5, noindex). Ancienne version gardée hors du dossier seulement : la consigne « ne pas modifier `plan-site.json` » est levée pour ces changements par Pierre lui-même.
+- 20/11/2026, accueil : nouvelle accroche « Une image à la hauteur de votre savoir-faire, du film jusqu'à votre site. ». Autres pistes si elle ne convient pas : « Des films et des photos à la hauteur de votre savoir-faire. » ; « Votre métier, filmé comme il le mérite. ». Changer le `h1` dans `plan-site.json` et dans `src/pages/index.html`.
+- 20/11/2026, Ziwig (réglé le 20/11 : Pierre confirme que ces photos sont publiques) : le cahier des charges parlait de secrets de fabrication et de brevets. Les photos mises en ligne montrent des équipements du commerce (séquenceur, automates) et la façade. À confirmer avec Ziwig avant la mise en ligne.
+- 20/11/2026, confidentialité (réglé le 20/11 : messages vers Gmail, page mise à jour) : le formulaire envoie-t-il les messages vers la boîte Gmail ? Si oui, il faudrait le dire dans la page (Google, hors de France). La page dit seulement « ma messagerie électronique ». Le fichier `form-handler.php` (F2) permettrait de le vérifier.
+- 20/11/2026, mentions légales (réglé le 23/11 : Pierre ne travaille pas pour des particuliers, pas de médiateur) : si tu travailles aussi pour des particuliers, la loi impose d'indiquer un médiateur de la consommation (article L616-1 du Code de la consommation). Pas ajouté.
+- 20/11/2026, Tasta : trois photos très détaillées dépassent 300 Ko en 1600 px même en qualité 60 ; `optimiser.py` laisse maintenant cette largeur de côté (le navigateur prend la 960). Les fichiers trop lourds déjà produits ont été déplacés dans `medias/ecartes/` (suppression impossible sur ce poste).
+- 20/11/2026, page de liens : `liens.html` (sans en-tête ni pied, non indexée) est à mettre en lien de bio Instagram, LinkedIn et Facebook : https://www.pibes.fr/liens.html
+
+## Journal
+
+- 16/11/2026, Fable 5.2 (architecte) : architecture, plan du site, textes, découpage en lots et script de recette écrits. Script testé sur un site factice : conforme accepté, 29 fautes injectées toutes détectées.
+- 16/11/2026, Fable 5.2 (architecte) : skills Impeccable 4.9.2 et Taste 2.5.1 copiés dans `skills/`. `DESIGN.md` et `PRODUCT.md` écrits à partir du CSS de la page portfolio en ligne. Textes et composants revus (plus de surtitres, de rangée de chiffres, de cartes égales, d'apparition au défilement). Règles de design ajoutées à `verifier.py`.
+- 19/11/2026, Opus 5.5 (lots 1 et 2 enchaînés à la demande de Pierre) : **lot 1 terminé**. `build.py` (contrat §5 : jetons, partiels `{{> nom}}`, grilles de reels `{{reels}}` / `{{reels:public}}` générées depuis `projets.json`, `aria-current`, scripts par gabarit, JSON-LD, `--staging`, `sitemap.xml`, `robots.txt`, `.htaccess`, `MANIFESTE.txt`, liste des fichiers orphelins). Partiels `tete`, `entete`, `pied`, `appel`, `sigle` (sigle « PB » de la page portfolio vectorisé en SVG `currentColor`). CSS en 4 feuilles, `site.js` (menu plein écran, barre mobile, tête de lecture de frise), `htaccess.base`, Geist et Geist Mono latin en woff2 (29 et 23 Ko, licence OFL copiée), `favicon.svg` (le « P » du logo, ambre sur noir), `404.html`. Rendu regardé à 1440, 1024, 768, 390 et 320 px : aucun débordement ; menu mobile testé (ouverture, focus, Échap). `favicon.ico` reste pour le lot 6.
+- 19/11/2026, Opus 5.5 : **lot 2 terminé**. `src/pages/index.html` : ouverture (`h1` sur deux lignes, chapeau, deux boutons, image `optima-atelier` en `fetchpriority="high"`), « Pour qui je travaille » (portes), « Les trois offres » (liste, la première avec `optima-helicoptere`), « Un film, et tout ce qui en découle » (façade YouTube `2J7MZ--tcww` sur `optima-miniature`, plus `optima-oeuvre-noir-blanc`), « La méthode, en quatre étapes » (frise et tête de lecture, bande), « Reels » (grille des 6 reels générée par `build.py`), « Ce que je ne fais pas » (bande, `h2` masqué à l'écran, la phrase en Headline), bloc de fin. Composants `portes`, `liste-offres`, `film`, `frise`, `grille-reels` (et lecteur), `citation`, `phrase` dans `30-composants.css` ; `src/js/video.js` (façade YouTube, aperçus des reels, lecteur, vidéo d'ouverture `video[data-src]` prête pour F4). Comportement des reels repris du code de la page portfolio en ligne, lu dans le navigateur le 19/11 (F1 non déposé). Images web provisoires produites en attendant `optimiser.py` (lot 6) avec les mêmes règles (§10 : WebP 480/960/1600, qualité 78, sans agrandir) ; vignettes des reels copiées depuis `miniatures_portfolio.zip`. Absents faute de matière : vidéo d'ouverture (F4), contexte, livrables et citation Delwood (F3), lien vers l'étude de cas (F12). Rendu regardé à 1440, 1024, 768, 390 et 320 px (aucun débordement) ; contrôlés dans un navigateur : un seul élément ambre par écran, entrée de l'ouverture seule animée, tête de lecture, façade YouTube, lecteur (flèches, Échap, retour du focus), barre mobile, mouvement réduit, page lisible sans JavaScript. Poids local de l'accueil au chargement : environ 1,1 Mo (plafond 1,5 Mo). Captures dans `captures/`. Les écrans « méthode » et « ce que je ne fais pas » n'ont ni film ni reel : la vidéo F4 ou les photos des projets permettront d'en ajouter.
+
+
+- 19/11/2026, Sonnet 5.5 : **lots 3 à 8 enchaînés** à la demande de Pierre. Pages d'offre (5), `projets.html` (grille de films générée par `build.py`), `a-propos.html`, `contact.html` + `contact.js`, `optimiser.py`, `partage.jpg`, `favicon.ico`. Recette : lots 1 à 7 et lot 8 en staging OK (avec `--en-attente` pour les 5 pages sans matière). Rendu regardé à 1440, 390 et 320 px : aucun débordement.
+- 20/11/2026, Opus 5.5 : réponses de Pierre intégrées (F3 en partie, F7, F11, F12, F13). Accueil réécrit (accroche, ton plus chaleureux, savoir-faire et qualité d'image, accompagnement complet, publication programmée sans gestion des réseaux), communication globale revue, FAQ et « Un projet à votre mesure » sur le mini-documentaire. Construits : 3 études de cas (gabarit `etude`, galerie photo), mentions légales, confidentialité, `tatouage.html`, `sante.html`, `liens.html`. Formulaire repris selon `DESIGN.md` (champs à filet). `build.py` : `{{reel:id}}`, gabarit `liens`. Recette : lot 8 et lot 8 `--staging` OK, 0 erreur, 0 alerte, 18 pages. Rendu regardé à 1440, 390 et 320 px : aucun débordement.
+- 20/11/2026, Opus 5.5 : citation de Delwood (accueil et étude), présentation d'Optima Aero, confidentialité (Gmail, Google, Data Privacy Framework).
+- 23/11/2026, Opus 5.5 : vidéo d'ouverture intégrée (balise posée sur l'image fixe, fondu quand elle joue, 720p sous 768 px, rien si mouvement réduit ou économie de données). `build.py --apercu` (dossier `apercu/`, vidéo servie depuis `medias/web/`), dépôt Git préparé (README, `.gitignore`, action GitHub Pages).

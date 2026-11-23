@@ -1,0 +1,14 @@
+/* Jetons de la charte : copie exacte de DESIGN.md (section Colors).
+   Seule feuille où une couleur peut être écrite en dur. */
+:root {
+  color-scheme: dark;
+  --fond: #12110f; --fond-2: #181614; --noir: #0a0908;
+  --encre: #efebe4; --encre-2: rgba(239, 235, 228, .78); --doux: #a29d94;
+  --trait: rgba(239, 235, 228, .11); --trait-2: rgba(239, 235, 228, .22);
+  --accent: #f2a900; --accent-vif: #ffb91c; --encre-accent: #161107;
+  --police: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --largeur: 1240px; --marge: clamp(20px, 4vw, 48px);
+  --section: clamp(72px, 9vw, 120px); --rayon: 4px;
+  --glisse: cubic-bezier(.2, .7, .2, 1);
+}
