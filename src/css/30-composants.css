@@ -484,3 +484,16 @@
 /* Vidéo d'ouverture : posée sur l'image fixe, elle n'apparaît (fondu) qu'une fois lancée */
 .ouverture-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .6s var(--glisse); }
 .ouverture-video.joue { opacity: 1; }
+
+/* Un seul film : pleine largeur, limité en largeur */
+.grille-films-seul { grid-template-columns: minmax(0, 1fr) !important; max-width: 880px; }
+/* Santé : deux photos et un flyer */
+#centre-femme .chapeau { margin-bottom: clamp(24px, 3vw, 36px); max-width: 62ch; }
+.galerie-sante { display: grid; gap: 10px; }
+.galerie-sante-photos { display: grid; gap: 10px; }
+.galerie-sante-photos .cadre-media { aspect-ratio: 3 / 2; }
+.galerie-sante-flyer { aspect-ratio: 1821 / 2576; max-width: 420px; }
+@media (min-width: 960px) {
+  .galerie-sante { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; }
+  .galerie-sante-flyer { max-width: none; }
+}

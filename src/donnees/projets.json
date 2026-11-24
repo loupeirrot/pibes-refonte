@@ -1,46 +1,236 @@
 {
   "_lisez_moi": "Films et reels montrés sur le site. Identifiants relevés sur la page /portfolio/ en ligne le 16/11/2026. Pierre complète ; un modèle n'ajoute jamais un projet de lui-même.",
-  "bunny": { "bibliotheque": "801824", "cdn": "vz-25e90935-e10.b-cdn.net" },
+  "bunny": {
+    "bibliotheque": "801824",
+    "cdn": "vz-25e90935-e10.b-cdn.net"
+  },
   "projets": [
     {
-      "id": "optima-delwood", "type": "film", "source": "youtube", "video": "2J7MZ--tcww",
-      "titre": "Optima by Delwood", "sous_titre": "Quand un hélicoptère devient une œuvre d'art",
-      "public": ["entreprise"], "etude": "projets/optima-delwood.html", "vignette": "optima"
+      "id": "optima-delwood",
+      "type": "film",
+      "source": "youtube",
+      "video": "2J7MZ--tcww",
+      "titre": "Optima by Delwood",
+      "sous_titre": "Quand un hélicoptère devient une œuvre d'art",
+      "public": [
+        "entreprise"
+      ],
+      "etude": "projets/optima-delwood.html",
+      "vignette": "optima"
     },
     {
-      "id": "ziwig", "type": "film", "source": "youtube", "video": "B3PK27fVF2A",
-      "titre": "Laboratoire Ziwig", "sous_titre": "Innovation 2025",
-      "public": ["entreprise"], "etude": "projets/ziwig.html", "vignette": "ziwig-facade"
+      "id": "ziwig",
+      "type": "film",
+      "source": "youtube",
+      "video": "B3PK27fVF2A",
+      "titre": "Laboratoire Ziwig",
+      "sous_titre": "Innovation 2025",
+      "public": [
+        "entreprise"
+      ],
+      "etude": "projets/ziwig.html",
+      "vignette": "ziwig-facade"
     },
     {
-      "id": "bal-pompiers", "type": "reel", "source": "bunny", "video": "76510156-1c0d-4b75-800e-fa5e40481d45",
-      "titre": "Bal des pompiers 2026", "sous_titre": "Événementiel",
-      "public": ["evenement"], "etude": null, "vignette": "reel-01"
+      "id": "bal-pompiers",
+      "type": "reel",
+      "source": "bunny",
+      "video": "76510156-1c0d-4b75-800e-fa5e40481d45",
+      "titre": "Bal des pompiers 2026",
+      "sous_titre": "Événementiel",
+      "public": [
+        "evenement",
+        "accueil"
+      ],
+      "etude": null,
+      "vignette": "reel-01"
     },
     {
-      "id": "posca-delwood", "type": "reel", "source": "bunny", "video": "b0c90fa4-87d7-4ffa-b4bb-92fe266a5d3f",
-      "titre": "Posca by Delwood", "sous_titre": "Artiste",
-      "public": ["entreprise"], "etude": "projets/optima-delwood.html", "vignette": "reel-02"
+      "id": "posca-delwood",
+      "type": "reel",
+      "source": "bunny",
+      "video": "b0c90fa4-87d7-4ffa-b4bb-92fe266a5d3f",
+      "titre": "Posca by Delwood",
+      "sous_titre": "Artiste",
+      "public": [
+        "entreprise",
+        "accueil"
+      ],
+      "etude": "projets/optima-delwood.html",
+      "vignette": "reel-02"
     },
     {
-      "id": "complexe-immobilier", "type": "reel", "source": "bunny", "video": "4f70a475-b306-46f0-8329-eb48d46c6c73",
-      "titre": "Complexe immobilier", "sous_titre": "Arthur Lasson",
-      "public": ["immobilier"], "etude": null, "vignette": "reel-03"
+      "id": "complexe-immobilier",
+      "type": "reel",
+      "source": "bunny",
+      "video": "4f70a475-b306-46f0-8329-eb48d46c6c73",
+      "titre": "Complexe immobilier",
+      "sous_titre": "Arthur Lasson",
+      "public": [
+        "immobilier",
+        "accueil"
+      ],
+      "etude": null,
+      "vignette": "reel-03"
     },
     {
-      "id": "la-nord", "type": "reel", "source": "bunny", "video": "d5af5a93-42e4-4d4c-9f0d-a2d8c3eac49e",
-      "titre": "La Nord · 02/10/2026", "sous_titre": "Surf, Hossegor",
-      "public": ["sport"], "etude": null, "vignette": "reel-04"
+      "id": "la-nord",
+      "type": "reel",
+      "source": "bunny",
+      "video": "d5af5a93-42e4-4d4c-9f0d-a2d8c3eac49e",
+      "titre": "La Nord · 02/10/2026",
+      "sous_titre": "Surf, Hossegor",
+      "public": [
+        "sport",
+        "accueil"
+      ],
+      "etude": null,
+      "vignette": "reel-04"
     },
     {
-      "id": "le-stud", "type": "reel", "source": "bunny", "video": "dcb74af6-23c7-4dc5-ba5f-7c96e3d5a6c2",
-      "titre": "Le Stud", "sous_titre": "Cyril Cazeaux",
-      "public": ["artisan"], "etude": null, "vignette": "reel-05"
+      "id": "le-stud",
+      "type": "reel",
+      "source": "bunny",
+      "video": "dcb74af6-23c7-4dc5-ba5f-7c96e3d5a6c2",
+      "titre": "Le Stud",
+      "sous_titre": "Cyril Cazeaux",
+      "public": [
+        "commerce",
+        "accueil"
+      ],
+      "etude": null,
+      "vignette": "reel-05"
     },
     {
-      "id": "tasta-wood-solution", "type": "reel", "source": "bunny", "video": "0bd76f20-e0cf-4149-971b-f0f35a9305da",
-      "titre": "Tasta by Wood Solution", "sous_titre": "Architecture bois",
-      "public": ["artisan"], "etude": "projets/tasta-wood-solution.html", "vignette": "reel-06"
+      "id": "tasta-wood-solution",
+      "type": "reel",
+      "source": "bunny",
+      "video": "0bd76f20-e0cf-4149-971b-f0f35a9305da",
+      "titre": "Tasta by Wood Solution",
+      "sous_titre": "Architecture bois",
+      "public": [
+        "artisan",
+        "accueil"
+      ],
+      "etude": "projets/tasta-wood-solution.html",
+      "vignette": "reel-06"
+    },
+    {
+      "id": "gite-herm",
+      "type": "film",
+      "source": "youtube",
+      "video": "wr4XiXFphRQ",
+      "titre": "Gîte à Herm",
+      "sous_titre": "Vincent Forsans",
+      "public": [
+        "immobilier"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "gite-herm-reel",
+      "type": "reel",
+      "source": "bunny",
+      "video": "2f55aad3-43db-4768-ba41-dcd3199ff995",
+      "titre": "Gîte à Herm",
+      "sous_titre": "Vincent Forsans",
+      "public": [
+        "immobilier"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "appart-location",
+      "type": "reel",
+      "source": "bunny",
+      "video": "3bb90872-6d43-4c42-879a-825aabfe3b3f",
+      "titre": "Appartement en location",
+      "sous_titre": "Location",
+      "public": [
+        "immobilier"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "appart-capbreton",
+      "type": "reel",
+      "source": "bunny",
+      "video": "425e8328-7e81-4611-b1f3-1cfeda093f97",
+      "titre": "Appartement en centre-ville",
+      "sous_titre": "Capbreton",
+      "public": [
+        "immobilier"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "tatouage-jeannot-1",
+      "type": "reel",
+      "source": "bunny",
+      "video": "295d741a-bdb0-4b1d-9594-1c070113869e",
+      "titre": "Jeannot",
+      "sous_titre": "Tatoueur",
+      "public": [
+        "tatouage"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "tatouage-jeannot-2",
+      "type": "reel",
+      "source": "bunny",
+      "video": "cddb9eed-b1c4-44dd-bd3f-d611ae39016b",
+      "titre": "Jeannot",
+      "sous_titre": "Une séance",
+      "public": [
+        "tatouage"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "ecureuil-inauguration",
+      "type": "reel",
+      "source": "bunny",
+      "video": "4ca83aa7-ca0d-4b4b-b7d0-2f1e362cf012",
+      "titre": "L’Écureuil",
+      "sous_titre": "Inauguration",
+      "public": [
+        "tatouage"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "terrasse-bois",
+      "type": "reel",
+      "source": "bunny",
+      "video": "3a2e4a75-7045-4e74-b209-196fa56a05b1",
+      "titre": "Une terrasse",
+      "sous_titre": "Réalisation",
+      "public": [
+        "artisan"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "eau-et-plaisir",
+      "type": "reel",
+      "source": "bunny",
+      "video": "7093df98-b2a6-49e1-84d7-47932eb75ff2",
+      "titre": "Eau et plaisir",
+      "sous_titre": "Piscine, Seignosse",
+      "public": [
+        "artisan"
+      ],
+      "etude": null,
+      "vignette": null
     }
   ]
 }

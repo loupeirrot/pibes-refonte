@@ -132,10 +132,11 @@ def section_reels(projets, public, ancre, titre):
             f'    {grille_reels(projets, public)}\n  </div>\n</section>')
 
 
-def grille_films(projets):
+def grille_films(projets, public=None):
     """Cartes des films (façade YouTube) ; lien vers l'étude de cas seulement si sa page existe."""
-    films = [p for p in projets["projets"] if p["type"] == "film"]
-    lignes = ['<ul class="grille-films">']
+    films = [p for p in projets["projets"] if p["type"] == "film"
+             and (public is None or public in p.get("public", []))]
+    lignes = ['<ul class="grille-films' + (' grille-films-seul' if len(films) == 1 else '') + '">']
     for p in films:
         titre, sous, vid = p["titre"], p["sous_titre"], p["video"]
         vign = None
@@ -143,7 +144,11 @@ def grille_films(projets):
             if cand and os.path.exists(os.path.join(STATIQUE, "assets", "img", f"{cand}-960.webp")):
                 vign = cand
                 break
-        if vign:
+        if not vign and p.get("source") == "youtube":
+            media = (f'<img src="https://i.ytimg.com/vi/{attr(vid)}/maxresdefault.jpg" width="1280" height="720"'
+                     f' alt="" loading="lazy" decoding="async">')
+            classe = "film-bouton"
+        elif vign:
             media = (f'<img src="{{{{racine}}}}assets/img/{vign}-960.webp"'
                      f' srcset="{{{{racine}}}}assets/img/{vign}-480.webp 480w, {{{{racine}}}}assets/img/{vign}-960.webp 960w"'
                      f' sizes="(min-width: 768px) 46vw, 92vw" width="960" height="536" alt="" loading="lazy" decoding="async">')
@@ -282,7 +287,7 @@ def main():
         corps = inclure(corps)
 
         # grilles de reels générées depuis projets.json : {{reels}} ou {{reels:artisan}}
-        corps = corps.replace("{{films}}", grille_films(projets))
+        corps = re.sub(r"\{\{films(?::([\w-]+))?\}\}", lambda m: grille_films(projets, m.group(1)), corps)
         corps = re.sub(r"\{\{section-reels:([\w-]+)\|([\w-]+)\|([^}]+)\}\}",
                        lambda m: section_reels(projets, m.group(1), m.group(2), m.group(3)), corps)
         # liens légaux du pied de page : seulement si les pages existent (F7)
