@@ -497,3 +497,9 @@
   .galerie-sante { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: start; }
   .galerie-sante-flyer { max-width: none; }
 }
+
+/* Immobilier : pack du gîte (film horizontal + reel vertical) */
+.pack-chapeau { margin-bottom: clamp(24px, 3vw, 36px); max-width: 62ch; }
+.pack-grille { display: grid; gap: 24px 10px; align-items: start; }
+.pack-grille .grille-films-seul { max-width: none; }
+@media (min-width: 768px) { .pack-grille { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); } .pack-grille .grille-reels { grid-template-columns: minmax(0, 1fr); } .pack-grille .grille-reels li { transform: none; margin: 0; } }

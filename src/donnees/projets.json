@@ -81,7 +81,7 @@
       "titre": "La Nord · 02/10/2026",
       "sous_titre": "Surf, Hossegor",
       "public": [
-        "sport",
+        "surf",
         "accueil"
       ],
       "etude": null,
@@ -95,7 +95,7 @@
       "titre": "Le Stud",
       "sous_titre": "Cyril Cazeaux",
       "public": [
-        "commerce",
+        "sport",
         "accueil"
       ],
       "etude": null,
@@ -121,7 +121,7 @@
       "source": "youtube",
       "video": "wr4XiXFphRQ",
       "titre": "Gîte à Herm",
-      "sous_titre": "Vincent Forsans",
+      "sous_titre": "La visite complète",
       "public": [
         "immobilier"
       ],
@@ -134,9 +134,9 @@
       "source": "bunny",
       "video": "2f55aad3-43db-4768-ba41-dcd3199ff995",
       "titre": "Gîte à Herm",
-      "sous_titre": "Vincent Forsans",
+      "sous_titre": "Le reel",
       "public": [
-        "immobilier"
+        "pack-gite"
       ],
       "etude": null,
       "vignette": null
@@ -172,8 +172,8 @@
       "type": "reel",
       "source": "bunny",
       "video": "295d741a-bdb0-4b1d-9594-1c070113869e",
-      "titre": "Jeannot",
-      "sous_titre": "Tatoueur",
+      "titre": "L’Art et l’Encre",
+      "sous_titre": "Jean, tatoueur",
       "public": [
         "tatouage"
       ],
@@ -185,8 +185,8 @@
       "type": "reel",
       "source": "bunny",
       "video": "cddb9eed-b1c4-44dd-bd3f-d611ae39016b",
-      "titre": "Jeannot",
-      "sous_titre": "Une séance",
+      "titre": "L’Art et l’Encre",
+      "sous_titre": "Une séance avec Jean",
       "public": [
         "tatouage"
       ],
