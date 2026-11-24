@@ -107,11 +107,29 @@ def grille_reels(projets, public=None, ident=None):
             f' data-video="{attr(p["video"])}" data-titre="{attr(titre)}" data-sous="{attr(sous)}"'
             f' aria-label="{attr(f"Lire le reel {titre}, {sous}")}">'
             f'<span class="reel-cadre"><span class="reel-zoom">'
-            f'<img src="{{{{racine}}}}assets/img/{p["vignette"]}.jpg" alt="" width="720" height="1280" loading="lazy" decoding="async">'
+            f'<img src="{vignette_reel(projets, p)}" alt="" width="720" height="1280" loading="lazy" decoding="async">'
             f'</span><span class="reel-icone">{ICONE_LECTURE}</span><span class="reel-avance"></span></span>'
             f'<span class="legende"><b>{html.escape(titre)}.</b> {html.escape(sous)}.</span></a></li>')
     lignes.append("</ul>")
     return "\n".join(lignes)
+
+
+def vignette_reel(projets, p):
+    """Vignette locale (statique/assets/img/<vignette>.jpg) si elle existe,
+    sinon la miniature générée par Bunny Stream."""
+    v = p.get("vignette")
+    if v and os.path.exists(os.path.join(STATIQUE, "assets", "img", v + ".jpg")):
+        return "{{racine}}assets/img/" + v + ".jpg"
+    return f"https://{projets['bunny']['cdn']}/{p['video']}/thumbnail.jpg"
+
+
+def section_reels(projets, public, ancre, titre):
+    """{{section-reels:public|ancre|Titre}} : la section entière, ou rien s'il n'y a aucun reel."""
+    if not any(p["type"] == "reel" and public in p.get("public", []) for p in projets["projets"]):
+        return ""
+    return (f'<section class="section" id="{ancre}" aria-labelledby="{ancre}-titre">\n  <div class="cadre">\n'
+            f'    <h2 class="section-titre" id="{ancre}-titre">{titre}</h2>\n'
+            f'    {grille_reels(projets, public)}\n  </div>\n</section>')
 
 
 def grille_films(projets):
@@ -265,6 +283,8 @@ def main():
 
         # grilles de reels générées depuis projets.json : {{reels}} ou {{reels:artisan}}
         corps = corps.replace("{{films}}", grille_films(projets))
+        corps = re.sub(r"\{\{section-reels:([\w-]+)\|([\w-]+)\|([^}]+)\}\}",
+                       lambda m: section_reels(projets, m.group(1), m.group(2), m.group(3)), corps)
         # liens légaux du pied de page : seulement si les pages existent (F7)
         for legal in ("mentions-legales.html", "confidentialite.html"):
             if not os.path.exists(os.path.join(SRC, "pages", legal)):

@@ -39,12 +39,20 @@
   </div>
 </section>
 
-<section class="section" id="confiance" aria-labelledby="confiance-titre">
+<section class="section" id="photos" aria-labelledby="photos-titre">
   <div class="cadre">
-    <h2 class="section-titre" id="confiance-titre">Ils m’ont fait confiance</h2>
-    {{reels:artisan}}
+    <h2 class="section-titre" id="photos-titre">Les photos d’une réalisation</h2>
+    <ul class="galerie galerie-portrait">
+      <li class="cadre-media"><img src="{{racine}}assets/img/tasta-terrasse-480.webp" srcset="{{racine}}assets/img/tasta-terrasse-480.webp 480w, {{racine}}assets/img/tasta-terrasse-960.webp 960w, {{racine}}assets/img/tasta-terrasse-1600.webp 1600w" sizes="(min-width: 1240px) 280px, (min-width: 768px) 23vw, 46vw" width="480" height="320" alt="La terrasse en bois, ses tables et sa pergola en rondins." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/tasta-lac-480.webp" srcset="{{racine}}assets/img/tasta-lac-480.webp 480w, {{racine}}assets/img/tasta-lac-960.webp 960w, {{racine}}assets/img/tasta-lac-1600.webp 1600w" sizes="(min-width: 1240px) 280px, (min-width: 768px) 23vw, 46vw" width="480" height="600" alt="La terrasse vue du ciel, avec le lac d’Hossegor en fond." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/tasta-pergola-480.webp" srcset="{{racine}}assets/img/tasta-pergola-480.webp 480w, {{racine}}assets/img/tasta-pergola-960.webp 960w" sizes="(min-width: 1240px) 280px, (min-width: 768px) 23vw, 46vw" width="480" height="600" alt="Sous la pergola, les tables et le plancher en bois." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/tasta-vue-haut-480.webp" srcset="{{racine}}assets/img/tasta-vue-haut-480.webp 480w, {{racine}}assets/img/tasta-vue-haut-960.webp 960w, {{racine}}assets/img/tasta-vue-haut-1600.webp 1600w" sizes="(min-width: 1240px) 280px, (min-width: 768px) 23vw, 46vw" width="480" height="600" alt="Les tables et la pergola vues du dessus." loading="lazy" decoding="async"></li>
+    </ul>
+    <p class="suite"><a class="lien" href="{{racine}}projets/tasta-wood-solution.html">Voir le projet Tasta by Wood Solution</a></p>
   </div>
 </section>
+
+{{section-reels:artisan|confiance|Ils m’ont fait confiance}}
 
 <section class="section" id="zone" aria-labelledby="zone-titre">
   <div class="cadre scinde">
