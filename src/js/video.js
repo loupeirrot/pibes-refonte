@@ -40,6 +40,20 @@
     });
   });
 
+  document.querySelectorAll("[data-bunny]").forEach(function (lien) {
+    lien.addEventListener("click", function (e) {
+      e.preventDefault();
+      var cadre = document.createElement("iframe");
+      cadre.src = "https://iframe.mediadelivery.net/embed/" + BUNNY_BIBLIOTHEQUE + "/" +
+        encodeURIComponent(lien.getAttribute("data-bunny")) + "?autoplay=true&preload=true&responsive=true";
+      cadre.title = lien.getAttribute("data-titre") || "Lecteur vidéo";
+      cadre.allow = "accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen";
+      cadre.allowFullscreen = true;
+      lien.replaceWith(cadre);
+      cadre.focus();
+    });
+  });
+
   /* ======================================================================
      VIDÉO D'OUVERTURE : <video preload="none" data-src="…">
      La source n'est posée qu'après le chargement de la page, et jamais si le

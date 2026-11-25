@@ -13,7 +13,8 @@
       "titre": "Optima by Delwood",
       "sous_titre": "Quand un hélicoptère devient une œuvre d'art",
       "public": [
-        "entreprise"
+        "entreprise",
+        "art"
       ],
       "etude": "projets/optima-delwood.html",
       "vignette": "optima"
@@ -49,12 +50,13 @@
       "id": "posca-delwood",
       "type": "reel",
       "source": "bunny",
-      "video": "b0c90fa4-87d7-4ffa-b4bb-92fe266a5d3f",
+      "video": "fe8c761e-6a0e-43e2-8864-a1186a99a523",
       "titre": "Posca by Delwood",
       "sous_titre": "Artiste",
       "public": [
         "entreprise",
-        "accueil"
+        "accueil",
+        "art"
       ],
       "etude": "projets/optima-delwood.html",
       "vignette": "reel-02"
@@ -229,6 +231,45 @@
       "sous_titre": "Piscine, Seignosse",
       "public": [
         "artisan"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "surf-la-nord-film",
+      "type": "film",
+      "source": "youtube",
+      "video": "F17hYLMPUAQ",
+      "titre": "Session de surf à La Nord",
+      "sous_titre": "Hossegor, 9 mars 2026",
+      "public": [
+        "sport"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "fabien-lageyre-clip",
+      "type": "film",
+      "source": "bunny",
+      "video": "414a381e-4e73-4cff-b45a-102d856ced6a",
+      "titre": "Préparation physique",
+      "sous_titre": "Fabien Lageyre",
+      "public": [
+        "sport"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "aurena",
+      "type": "reel",
+      "source": "bunny",
+      "video": "eb5fda29-6bfd-4d26-a945-9499871de14d",
+      "titre": "Auréna",
+      "sous_titre": "Coaching sportif",
+      "public": [
+        "sport"
       ],
       "etude": null,
       "vignette": null

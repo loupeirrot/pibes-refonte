@@ -144,7 +144,11 @@ def grille_films(projets, public=None):
             if cand and os.path.exists(os.path.join(STATIQUE, "assets", "img", f"{cand}-960.webp")):
                 vign = cand
                 break
-        if not vign and p.get("source") == "youtube":
+        if not vign and p.get("source") == "bunny":
+            media = (f'<img src="https://{projets["bunny"]["cdn"]}/{attr(vid)}/thumbnail.jpg" width="1280" height="720"'
+                     f' alt="" loading="lazy" decoding="async">')
+            classe = "film-bouton"
+        elif not vign and p.get("source") == "youtube":
             media = (f'<img src="https://i.ytimg.com/vi/{attr(vid)}/maxresdefault.jpg" width="1280" height="720"'
                      f' alt="" loading="lazy" decoding="async">')
             classe = "film-bouton"
@@ -161,9 +165,13 @@ def grille_films(projets, public=None):
         if etude and os.path.exists(os.path.join(SRC, "pages", etude)):
             lien = f'<a class="lien" href="{{{{racine}}}}{etude}">Lire l\u2019étude de cas</a>'
         lignes.append(
-            f'<li class="film"><div class="film-cadre"><a class="{classe}" href="https://www.youtube.com/watch?v={attr(vid)}"'
-            f' data-youtube="{attr(vid)}" data-titre="{attr("Lecteur YouTube : " + titre)}"'
-            f' aria-label="{attr(f"Lire le film {titre} sur YouTube")}">{media}'
+            f'<li class="film"><div class="film-cadre"><a class="{classe}" '
+            + (f'href="https://iframe.mediadelivery.net/play/{projets["bunny"]["bibliotheque"]}/{attr(vid)}" data-bunny="{attr(vid)}"'
+               f' data-titre="{attr("Lecteur vidéo : " + titre)}" aria-label="{attr(f"Lire le film {titre}")}">'
+               if p.get("source") == "bunny" else
+               f'href="https://www.youtube.com/watch?v={attr(vid)}" data-youtube="{attr(vid)}"'
+               f' data-titre="{attr("Lecteur YouTube : " + titre)}" aria-label="{attr(f"Lire le film {titre} sur YouTube")}">')
+            + f'{media}'
             f'<span class="film-icone">{ICONE_LECTURE}</span></a></div>'
             f'<p class="legende"><b>{html.escape(titre)}.</b> {html.escape(sous)}.</p>{lien}</li>')
     lignes.append("</ul>")

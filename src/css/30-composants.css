@@ -503,3 +503,9 @@
 .pack-grille { display: grid; gap: 24px 10px; align-items: start; }
 .pack-grille .grille-films-seul { max-width: none; }
 @media (min-width: 768px) { .pack-grille { grid-template-columns: minmax(0, 3fr) minmax(0, 1fr); } .pack-grille .grille-reels { grid-template-columns: minmax(0, 1fr); } .pack-grille .grille-reels li { transform: none; margin: 0; } }
+
+.galerie-titre { margin: clamp(24px, 3vw, 36px) 0 14px; font-size: 1.05rem; color: var(--encre-2); }
+.galerie-titre:first-of-type { margin-top: 0; }
+.pack-grille .scinde-corps p + p { margin-top: 16px; }
+@media (min-width: 768px) { .pack-inverse { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
+@media (min-width: 768px) { #optima .pack-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px; } }
