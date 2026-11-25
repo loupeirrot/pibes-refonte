@@ -120,6 +120,14 @@
       "h1": "Artistes : faites vivre votre œuvre au-delà de l'atelier"
     },
     {
+      "fichier": "evenements.html",
+      "lot": 3,
+      "gabarit": "offre",
+      "titre": "Vidéo d'événements : inaugurations, festivals | Pierre Bargelès",
+      "description": "Inaugurations, festivals, soirées : je filme l'événement et je vous livre des reels et un film pour en parler. Cadreur pour vos productions dans les Landes.",
+      "h1": "Événements : filmer le moment, et le faire durer"
+    },
+    {
       "fichier": "projets.html",
       "lot": 4,
       "gabarit": "realisations",

@@ -38,7 +38,7 @@
       "source": "bunny",
       "video": "76510156-1c0d-4b75-800e-fa5e40481d45",
       "titre": "Bal des pompiers 2026",
-      "sous_titre": "Événementiel",
+      "sous_titre": "Capbreton",
       "public": [
         "evenement",
         "accueil"
@@ -204,7 +204,8 @@
       "titre": "L’Écureuil",
       "sous_titre": "Inauguration",
       "public": [
-        "tatouage"
+        "tatouage",
+        "evenement"
       ],
       "etude": null,
       "vignette": null
@@ -270,6 +271,32 @@
       "sous_titre": "Coaching sportif",
       "public": [
         "sport"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "lire-sur-la-vague",
+      "type": "film",
+      "source": "bunny",
+      "video": "3642f17c-29c0-4209-a7ce-504a5be3eed6",
+      "titre": "Lire sur la vague 2026",
+      "sous_titre": "Festival du livre jeunesse, Seignosse",
+      "public": [
+        "evenement"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "invitation-inauguration",
+      "type": "reel",
+      "source": "bunny",
+      "video": "1f02d059-d9b7-4078-b2a4-72c9364dd40d",
+      "titre": "L’Invitation",
+      "sous_titre": "Inauguration d’un salon d’esthétique",
+      "public": [
+        "evenement"
       ],
       "etude": null,
       "vignette": null
