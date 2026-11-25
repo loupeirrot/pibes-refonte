@@ -509,3 +509,6 @@
 .pack-grille .scinde-corps p + p { margin-top: 16px; }
 @media (min-width: 768px) { .pack-inverse { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); } }
 @media (min-width: 768px) { #festival, #optima .pack-grille { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px 48px; } }
+
+.pack-photos { margin-top: 24px; }
+.galerie-sante-photos .capture-site { aspect-ratio: 3212 / 2642; }

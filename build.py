@@ -179,16 +179,15 @@ def grille_films(projets, public=None):
 
 
 def video_ouverture(site, apercu):
-    """Balise <video> de l'ouverture de l'accueil (ARCHITECTURE.md, F4).
-    En ligne : MP4 de Bunny Stream (site.video_ouverture = identifiant Bunny).
-    Aperçu GitHub : fichiers de medias/web/, copiés dans apercu/assets/video/.
-    Sans l'un ni l'autre : rien, l'image fixe reste seule."""
-    if apercu:
+    """Balise <video> de l'ouverture de l'accueil.
+    Bunny Stream si site.video_ouverture est renseigné (1080p au-delà de 768 px, 720p en dessous).
+    Sinon, pour l'aperçu GitHub seulement : fichiers de medias/web/. Sinon rien : l'image fixe reste seule."""
+    if site.get("video_ouverture"):
+        base = f"https://{site.get('cdn_bunny', 'vz-25e90935-e10.b-cdn.net')}/{site['video_ouverture']}"
+        grand, petit = f"{base}/play_1080p.mp4", f"{base}/play_720p.mp4"
+    elif apercu:
         grand = "{{racine}}assets/video/ouverture-1080.mp4"
         petit = "{{racine}}assets/video/ouverture-720.mp4"
-    elif site.get("video_ouverture"):
-        base = f"https://{site.get('cdn_bunny', 'vz-25e90935-e10.b-cdn.net')}/{site['video_ouverture']}"
-        grand, petit = f"{base}/play_720p.mp4", f"{base}/play_480p.mp4"
     else:
         return ""
     return (f'<video class="ouverture-video" muted loop playsinline preload="none" aria-hidden="true"'
@@ -266,7 +265,7 @@ def main():
                 copier(source, os.path.relpath(source, STATIQUE))
 
     # ---------- aperçu GitHub : vidéo d'ouverture servie depuis le dépôt ----------
-    if args.apercu:
+    if args.apercu and not site.get("video_ouverture"):
         web = os.path.join(ICI, "medias", "web")
         for n in ("ouverture-1080.mp4", "ouverture-720.mp4"):
             if os.path.exists(os.path.join(web, n)):

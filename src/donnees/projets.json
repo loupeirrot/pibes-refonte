@@ -126,7 +126,7 @@
       "titre": "Gîte à Herm",
       "sous_titre": "La visite complète",
       "public": [
-        "immobilier"
+        "pack-gite"
       ],
       "etude": null,
       "vignette": null
@@ -297,6 +297,45 @@
       "sous_titre": "Inauguration d’un salon d’esthétique",
       "public": [
         "evenement"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "gabena",
+      "type": "film",
+      "source": "youtube",
+      "video": "T6t2bzxeVmA",
+      "titre": "Visite d’une réalisation Gabena",
+      "sous_titre": "Joliloc",
+      "public": [
+        "immobilier"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "snu-64",
+      "type": "film",
+      "source": "bunny",
+      "video": "958abc8b-c995-4eea-8a78-c36e8e0e168f",
+      "titre": "SNU 64",
+      "sous_titre": "Service national universel",
+      "public": [
+        "institution"
+      ],
+      "etude": null,
+      "vignette": null
+    },
+    {
+      "id": "la-kademie",
+      "type": "film",
+      "source": "bunny",
+      "video": "488a09e4-141a-4805-a4e9-5b97d68c9ea9",
+      "titre": "La Kademie",
+      "sous_titre": "Vidéo de présentation",
+      "public": [
+        "entreprise"
       ],
       "etude": null,
       "vignette": null

@@ -37,12 +37,27 @@
     <h2 class="section-titre" id="pack-gite-titre">Un pack complet pour vendre</h2>
     <p class="chapeau pack-chapeau">Pour un gîte à Herm, un seul tournage a donné tout ce qu’il faut pour la vente : la visite complète en vidéo pour YouTube, un reel pour les réseaux et une série de photos pour l’annonce.</p>
     <div class="pack-grille">
-      {{films:immobilier}}
+      {{films:pack-gite}}
       {{reel:gite-herm-reel}}
     </div>
+    <ul class="galerie galerie-paysage pack-photos">
+      <li class="cadre-media"><img src="{{racine}}assets/img/gite-herm-ciel-480.webp" srcset="{{racine}}assets/img/gite-herm-ciel-480.webp 480w, {{racine}}assets/img/gite-herm-ciel-960.webp 960w" sizes="(min-width: 1240px) 380px, (min-width: 768px) 31vw, 46vw" width="480" height="356" alt="Le gîte vu du ciel, avec sa piscine et son jardin." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/gite-herm-facade-480.webp" srcset="{{racine}}assets/img/gite-herm-facade-480.webp 480w, {{racine}}assets/img/gite-herm-facade-960.webp 960w, {{racine}}assets/img/gite-herm-facade-1600.webp 1600w" sizes="(min-width: 1240px) 380px, (min-width: 768px) 31vw, 46vw" width="480" height="320" alt="La façade en briques et colombages du gîte." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/gite-herm-piscine-480.webp" srcset="{{racine}}assets/img/gite-herm-piscine-480.webp 480w, {{racine}}assets/img/gite-herm-piscine-960.webp 960w, {{racine}}assets/img/gite-herm-piscine-1600.webp 1600w" sizes="(min-width: 1240px) 380px, (min-width: 768px) 31vw, 46vw" width="480" height="320" alt="La piscine du gîte et ses transats." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/gite-herm-salon-480.webp" srcset="{{racine}}assets/img/gite-herm-salon-480.webp 480w, {{racine}}assets/img/gite-herm-salon-960.webp 960w, {{racine}}assets/img/gite-herm-salon-1600.webp 1600w" sizes="(min-width: 1240px) 380px, (min-width: 768px) 31vw, 46vw" width="480" height="320" alt="Le salon, ses fauteuils en cuir rouge et l’escalier en bois." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/gite-herm-cuisine-480.webp" srcset="{{racine}}assets/img/gite-herm-cuisine-480.webp 480w, {{racine}}assets/img/gite-herm-cuisine-960.webp 960w, {{racine}}assets/img/gite-herm-cuisine-1600.webp 1600w" sizes="(min-width: 1240px) 380px, (min-width: 768px) 31vw, 46vw" width="480" height="320" alt="La cuisine équipée sous les poutres." loading="lazy" decoding="async"></li>
+      <li class="cadre-media"><img src="{{racine}}assets/img/gite-herm-chambre-480.webp" srcset="{{racine}}assets/img/gite-herm-chambre-480.webp 480w, {{racine}}assets/img/gite-herm-chambre-960.webp 960w, {{racine}}assets/img/gite-herm-chambre-1600.webp 1600w" sizes="(min-width: 1240px) 380px, (min-width: 768px) 31vw, 46vw" width="480" height="320" alt="Une chambre avec deux lits." loading="lazy" decoding="async"></li>
+    </ul>
   </div>
 </section>
 
 {{section-reels:immobilier|exemples|Et en reels}}
+
+<section class="section" id="visite" aria-labelledby="visite-titre">
+  <div class="cadre">
+    <h2 class="section-titre" id="visite-titre">Une autre visite en film</h2>
+    {{films:immobilier}}
+  </div>
+</section>
 
 {{> appel}}

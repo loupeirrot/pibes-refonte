@@ -10,6 +10,12 @@
   RewriteRule ^ https://www.%1%{REQUEST_URI} [L,R=301]
 </IfModule>
 
+# ---------- Fichiers privés du formulaire (form-handler.php) ----------
+# submissions.csv contient les messages reçus : jamais lisible depuis le web.
+<FilesMatch "\.(csv|log|sql|bak)$">
+  Require all denied
+</FilesMatch>
+
 # ---------- Page d'erreur et listes de dossiers ----------
 ErrorDocument 404 /404.html
 <IfModule mod_autoindex.c>
