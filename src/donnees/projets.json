@@ -339,6 +339,19 @@
       ],
       "etude": null,
       "vignette": null
+    },
+    {
+      "id": "bois-40-maritimes",
+      "type": "film",
+      "source": "bunny",
+      "video": "ae532966-841f-45a5-8760-40446c79918e",
+      "titre": "Bois 40 aux Maritimes",
+      "sous_titre": "Scierie de Hinx, aménagements bois au camping de Seignosse",
+      "public": [
+        "artisan"
+      ],
+      "etude": null,
+      "vignette": null
     }
   ]
 }
